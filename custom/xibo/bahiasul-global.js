@@ -1,56 +1,66 @@
 /* ==========================================================================
-   Conexão BahiaSul — Script de Redirecionamento Global e Troca de Nomes
+   Conexão BahiaSul — Substituição Global de Marca (Branding White Label)
    ========================================================================== */
 
 (function () {
     'use strict';
 
+    function replaceTextInNode(node) {
+        if (!node || !node.nodeValue) return;
+        let text = node.nodeValue;
+        if (/xibo/i.test(text)) {
+            text = text.replace(/Xibo Digital Signage/gi, 'BahiaSul Digital Signage');
+            text = text.replace(/Xibo Signage Ltd/gi, 'BahiaSul Signage');
+            text = text.replace(/Xibo Signage/gi, 'BahiaSul Signage');
+            text = text.replace(/Xibo Developers/gi, 'BahiaSul Developers');
+            text = text.replace(/Xibo/gi, 'BahiaSul');
+            node.nodeValue = text;
+        }
+    }
+
     function processDOM() {
-        // 1. Redirecionar todos os links xibosignage.com para bahiasul.com.br
+        // 1. Substituir Título da Aba do Navegador
+        if (document.title && /xibo/i.test(document.title)) {
+            document.title = document.title
+                .replace(/Xibo Digital Signage/gi, 'BahiaSul Digital Signage')
+                .replace(/Xibo Signage/gi, 'BahiaSul Signage')
+                .replace(/Xibo/gi, 'BahiaSul');
+        }
+
+        // 2. Substituir links e textos dos links xibosignage.com
         const links = document.querySelectorAll('a[href*="xibosignage.com"]');
         links.forEach(function (link) {
             link.href = 'https://bahiasul.com.br';
-            link.target = '_blank';
+            if (link.textContent.includes('xibosignage.com')) {
+                link.textContent = link.textContent.replace(/xibosignage\.com/gi, 'bahiasul.com.br');
+            }
         });
 
-        // 2. Centralizar e atualizar link da logo da tela de login
-        const loginLogoLinks = document.querySelectorAll('.login-card-logo a');
-        loginLogoLinks.forEach(function (a) {
-            a.href = 'https://bahiasul.com.br';
-        });
-
-        // 3. Substituir título do documento se contiver Xibo
-        if (document.title && document.title.includes('Xibo')) {
-            document.title = document.title.replace(/Xibo/g, 'Conexão BahiaSul');
-        }
-
-        // 4. Substituir ocorrências de texto "Xibo" por "Conexão BahiaSul"
+        // 3. Substituir nó de texto em todo o corpo do documento (modais, sobre, etc)
         if (document.body) {
             const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, null, false);
             let node;
             while (node = walker.nextNode()) {
-                if (node.nodeValue && node.nodeValue.includes('Xibo')) {
-                    node.nodeValue = node.nodeValue.replace(/Xibo/g, 'Conexão BahiaSul');
-                }
+                replaceTextInNode(node);
             }
         }
     }
 
+    // Executar imediatamente e ao carregar
+    processDOM();
     if (document.readyState === 'loading') {
         document.addEventListener('DOMContentLoaded', processDOM);
     } else {
         processDOM();
     }
 
-    // Observar alterações dinâmicas no DOM para Vue SPA
+    // Observar alterações dinâmicas no DOM para Vue SPA e Modais
     try {
         const observer = new MutationObserver(function () {
             processDOM();
         });
         if (document.body) {
-            observer.observe(document.body, { childList: true, subtree: true });
+            observer.observe(document.body, { childList: true, subtree: true, characterData: true });
         }
-    } catch (e) {
-        console.log('MutationObserver initialized');
-    }
+    } catch (e) {}
 })();

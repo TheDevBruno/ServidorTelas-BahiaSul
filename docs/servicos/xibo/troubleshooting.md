@@ -1,5 +1,29 @@
 # Xibo CMS — Troubleshooting
 
+## Falha de Player: "This display does not have a licence" (Identificador 1000)
+
+### Causa
+Esta mensagem ocorre quando uma tela/player se conecta ao Xibo CMS, mas o status de licença (`isLicensed`) ou autorização (`isAuthorized`) da tela não está ativo na base de dados. Enquanto não estiver licenciado, o player é impedido de reproduzir layouts e mídias.
+
+### Solução no Painel Web
+1. Acesse o painel web: `http://10.98.254.189/`
+2. Navegue até **Telas** (`Displays`) ➔ **Telas** (`Displays`).
+3. No menu de ação (`...`) da tela desejada, clique em **Autorizar** / **Editar**.
+4. Marque a opção **Licenciado? (`Is Licensed?`)** como **Sim**.
+5. Salve as alterações.
+
+### Solução via Linha de Comando (Ativar todas as telas)
+Para autorizar e licenciar todas as telas diretamente no banco de dados e reiniciar o cache:
+
+```bash
+sudo docker exec xibo-cms-db-1 mysql -u cms -pldlLtpdaqdImgY0NMLu7cRBK cms -e "
+UPDATE display SET isLicensed = 1, isAuthorized = 1;
+"
+sudo docker restart xibo-cms-web-1 xibo-cms-memcached-1
+```
+
+---
+
 ## Containers
 
 ```bash

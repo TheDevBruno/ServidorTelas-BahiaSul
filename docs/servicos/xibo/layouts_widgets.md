@@ -45,16 +45,32 @@ Este documento orienta a criação, estruturação e estilização de **Layouts,
   - *Fade / Carrossel com Intervalo* para blocos de notícias na lateral.
 - **Duração de Exibição por Item**: `10` segundos.
 
-### 2.3 Como Adicionar o HTML Template e CSS no Xibo CMS v4
+### 2.3 Mapeamento das Abas do Widget RSS Ticker no Xibo CMS v4 (Interface em Português)
 
-No Xibo v4, a edição do código HTML/CSS do Ticker fica oculta por padrão até você ativar a opção de substituição de modelo:
+Na versão 4 do Xibo em Português, o painel do **RSS Ticker** possui 4 abas superiores:
 
-1. **Clique sobre o Widget Ticker** que está dentro da região no Designer de Layout.
-2. No painel de propriedades que abre no lado direito da tela, clique na aba **Aparência** (*Appearance*).
-3. Procure e marque a opção **"Substituir o modelo?"** (*Override the template?*).
-4. Ao marcar essa caixa, o Xibo irá exibir duas caixas de texto de código:
-   - **Modelo Principal** (*Main Template / HTML*): Cole o código HTML abaixo.
-   - **Folha de Estilo** (*Style Sheet / CSS*): Cole o código CSS abaixo.
+1. **Aba `Configurar`**:
+   - Insira a **URL do Feed RSS** (ex: `https://g1.globo.com/rss/g1/`).
+   - Defina a quantidade de notícias a carregar.
+
+2. **Aba `Aparência`**:
+   - **Efeitos**: Altere de *"Sem Transição"* para **"Marquee Left"** (ou Rolagem Horizontal) para transformar o texto amontoado em uma linha contínua em movimento.
+   - **Velocidade**: Altere a velocidade de rolagem (padrão: `1000` a `2000`).
+
+3. **Aba `Dados substitutos`**:
+   - É nesta aba que fica o **Modelo HTML do Texto / Notícia**.
+   - Você verá os campos disponíveis (como `[Title]`, `[Description]`, `[Date]`).
+   - Cole a estrutura formatada HTML para exibir o título da notícia:
+     ```html
+     <div class="bahiasul-ticker-item">
+         <span class="ticker-badge">NOTÍCIAS</span>
+         <span class="ticker-title">[Title]</span>
+         <span class="ticker-separator">•</span>
+     </div>
+     ```
+
+4. **Aba `Avançado`**:
+   - Onde é possível inserir regras de **CSS adicionais** específicas para este Widget, ou você pode contar com os estilos que já injetamos no `override.css` global do sistema.
 
 ---
 

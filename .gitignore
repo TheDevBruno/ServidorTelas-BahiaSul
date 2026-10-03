@@ -1,0 +1,18 @@
+# Segredos e arquivos de ambiente
+*.env
+*.env.*
+!config.env.template
+
+# Backups e dados persistentes
+backup/
+shared/
+*.sql
+*.sql.gz
+*.tar
+*.tar.gz
+
+# Sistema operacional / editores
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

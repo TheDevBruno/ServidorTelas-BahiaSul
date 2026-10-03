@@ -88,7 +88,7 @@ aside, .sidebar, .main-sidebar, #sidebar-wrapper, div[class*="sidebar"] {
 }
 
 /* 4. BARRA DE FERRAMENTAS DE TABELAS & BOTÕES */
-.table-toolbar, .dt-buttons, .btn-toolbar, div[class*="toolbar"], div[class*="buttons-wrapper"] {
+.table-toolbar, .dt-buttons, .btn-toolbar, div[class*="toolbar-buttons"] {
     background-color: #FFFFFF !important;
     padding: 10px 15px !important;
     border-radius: 8px 8px 0 0 !important;
@@ -132,90 +132,107 @@ aside, .sidebar, .main-sidebar, #sidebar-wrapper, div[class*="sidebar"] {
     color: #FFFFFF !important;
 }
 
-/* 6. EDITOR DE LAYOUT (LAYOUT DESIGNER & WIDGET DRAWER - ALTA VISIBILIDADE) */
+/* ==========================================================================
+   6. CORREÇÃO ESPECÍFICA DO LAYOUT DESIGNER (XIBO 4.5.3)
+   Classes: .container-toolbar, .toolbar-pane, .toolbar-widgets-pane, .toolbar-card
+   ========================================================================== */
 
-/* Cabeçalho do Editor de Layout (Layout "Sem título...") */
-#layout-designer header, .designer-header, [class*="designer-header"], [class*="layout-header"] {
-    background-color: var(--bahiasul-azul-escuro) !important;
-    color: #FFFFFF !important;
-    border-bottom: 3px solid var(--bahiasul-laranja) !important;
+/* 6.1 Container Principal da Toolbar */
+.container-toolbar, [class*="container-toolbar"] {
+    background-color: #072540 !important; /* Azul Profundo */
+    border-right: 1px solid #0B3960 !important;
 }
 
-#layout-designer header *, .designer-header *, [class*="designer-header"] * {
-    color: #FFFFFF !important;
-}
-
-/* Tira Vertical de Ícones de Navegação do Gaveteiro (Widgets, Camadas, Configs) */
-[class*="drawer-nav"], [class*="drawer-tabs"], .drawer-menu, [class*="drawer-sidebar"], [class*="designer-sidebar"] {
+/* 6.2 Paineis e Abas da Toolbar (toolbar-pane, toolbar-widgets-pane) */
+.toolbar-pane, .toolbar-widgets-pane, [class*="toolbar-pane"], [class*="toolbar-widgets"] {
     background-color: #072540 !important;
-}
-
-/* Ícones dos Botões Inativos da Barra Vertical (Câmera, Camadas, Engrenagem) */
-[class*="drawer-nav"] button, [class*="drawer-tabs"] button, [class*="drawer-nav"] a, [class*="drawer-tabs"] a, [class*="drawer"] .nav-link {
-    background-color: transparent !important;
     color: #FFFFFF !important;
-    opacity: 0.9 !important;
 }
 
-[class*="drawer-nav"] i, [class*="drawer-tabs"] i, [class*="drawer-nav"] svg, [class*="drawer-tabs"] svg, [class*="drawer"] .nav-link svg, [class*="drawer"] .nav-link i, [class*="designer"] i, [class*="designer"] svg {
+/* Botões e Ícones Inativos dentro dos Paineis da Toolbar */
+.toolbar-pane button, .toolbar-pane a, .toolbar-pane i, .toolbar-pane svg,
+.toolbar-widgets-pane button, .toolbar-widgets-pane i, .toolbar-widgets-pane svg,
+.container-toolbar button i, .container-toolbar button svg,
+[class*="toolbar-pane"] button, [class*="toolbar-pane"] i, [class*="toolbar-pane"] svg {
     color: #FFFFFF !important;
     fill: #FFFFFF !important;
-    font-size: 20px !important;
     opacity: 1 !important;
 }
 
-/* Hover nos Ícones da Barra Vertical */
-[class*="drawer-nav"] button:hover, [class*="drawer-tabs"] button:hover, [class*="drawer-nav"] a:hover {
+/* Estado de Hover nos Itens/Botões da Toolbar */
+.toolbar-pane button:hover, .toolbar-pane a:hover,
+.toolbar-widgets-pane button:hover, .container-toolbar button:hover,
+[class*="toolbar-pane"] button:hover {
     background-color: var(--bahiasul-azul-medio) !important;
     color: #FFFFFF !important;
 }
 
-/* Botão de Ícone Ativo no Gaveteiro (Ex: Grid Azul de Widgets) */
-[class*="drawer-nav"] button.active, [class*="drawer-tabs"] button.active, [class*="drawer-nav"] .active > a, [class*="drawer"] .nav-link.active {
+/* Painel/Aba Ativa (toolbar-widgets-pane.active) */
+.toolbar-pane.active, .toolbar-widgets-pane.active,
+.container-toolbar .active, .toolbar-pane button.active,
+[class*="toolbar-pane"].active, [class*="toolbar-pane"] button.active {
     background-color: var(--bahiasul-laranja) !important;
     color: #FFFFFF !important;
     box-shadow: 0 2px 8px rgba(242, 109, 33, 0.4) !important;
 }
 
-[class*="drawer-nav"] button.active svg, [class*="drawer-tabs"] button.active svg, [class*="drawer"] .nav-link.active svg {
+.toolbar-pane.active i, .toolbar-widgets-pane.active i,
+.toolbar-pane.active svg, .toolbar-widgets-pane.active svg {
     color: #FFFFFF !important;
     fill: #FFFFFF !important;
 }
 
-/* Conteúdo da Gaveta de Widgets */
-.designer-drawer, .layout-designer, #layout-designer, .widget-drawer, .drawer-content, [class*="designer-content"] {
-    text-transform: none !important;
+/* 6.3 Cartões dos Widgets (toolbar-card) */
+.toolbar-card, [class*="toolbar-card"] {
     background-color: #FFFFFF !important;
-}
-
-/* Ajuste das caixas de widgets para não truncar texto */
-[class*="widget-card"], [class*="widget-box"], .widget-item, .designer-widget, .drawer-content .card, [class*="widget-item"] {
-    padding: 6px 4px !important;
-    text-align: center !important;
-    min-height: 65px !important;
-    overflow: hidden !important;
-    border: 1px solid #E2E8F0 !important;
+    border: 1px solid #CBD5E1 !important;
     border-radius: 8px !important;
+    padding: 10px 6px !important;
+    text-align: center !important;
+    transition: all 0.2s ease-in-out !important;
+    box-shadow: 0 2px 6px rgba(11, 57, 96, 0.05) !important;
 }
 
-/* Texto dos widgets (Upload Video, Clock, HLS, HTML, Webpage, etc) */
-[class*="widget-"] *, .designer-widget *, .drawer-content span, .drawer-content div, .drawer-content p {
+.toolbar-card:hover {
+    border-color: var(--bahiasul-laranja) !important;
+    box-shadow: 0 4px 12px rgba(242, 109, 33, 0.2) !important;
+    transform: translateY(-2px) !important;
+}
+
+/* Texto dentro dos Cartões de Widgets */
+.toolbar-card *, .toolbar-card p, .toolbar-card span, .toolbar-card div, .toolbar-card label, [class*="toolbar-card"] * {
+    color: var(--bahiasul-azul-escuro) !important;
+    font-family: 'Montserrat', sans-serif !important;
     font-size: 11px !important;
-    font-weight: 600 !important;
-    line-height: 1.2 !important;
+    font-weight: 700 !important;
     text-transform: none !important;
     letter-spacing: 0 !important;
+    line-height: 1.2 !important;
     word-break: break-word !important;
     white-space: normal !important;
-    color: var(--bahiasul-azul-escuro) !important;
 }
 
-/* Títulos de Busca e Rótulos do Form no Gaveteiro */
-.drawer-content label, .drawer-content h5, .drawer-content h6, .drawer-content .title {
-    color: var(--bahiasul-azul-escuro) !important;
+/* Ícones dos Widgets nos Cartões */
+.toolbar-card i, .toolbar-card svg, .toolbar-card img, [class*="toolbar-card"] i, [class*="toolbar-card"] svg {
+    color: var(--bahiasul-laranja) !important;
+    fill: var(--bahiasul-laranja) !important;
+    font-size: 22px !important;
+    margin-bottom: 4px !important;
+}
+
+/* 6.4 Campos de Formulário e Rótulos no Conteúdo da Toolbar */
+.toolbar-pane label, .container-toolbar label, [class*="toolbar"] label {
+    color: #FFFFFF !important;
     font-family: 'Montserrat', sans-serif !important;
     font-weight: 700 !important;
     font-size: 12px !important;
+}
+
+.toolbar-pane input, .toolbar-pane select, .container-toolbar input, .container-toolbar select {
+    background-color: #FFFFFF !important;
+    color: #333333 !important;
+    border: 1px solid #CBD5E1 !important;
+    border-radius: 6px !important;
 }
 
 /* 7. CARTÕES E CAMPOS DE FORMULÁRIO GERAIS */

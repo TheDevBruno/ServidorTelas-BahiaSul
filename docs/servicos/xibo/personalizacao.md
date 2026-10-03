@@ -2,77 +2,72 @@
 
 ## Visão Geral
 
-Esta documentação especifica a reformulação visual do **Xibo CMS** alinhada estritamente às diretrizes do **Design System oficial da Conexão BahiaSul**.
+Esta documentação especifica a personalização e substituição visual do **Xibo CMS v4** alinhada estritamente às diretrizes do **Design System oficial da Conexão BahiaSul**.
 
-A reformulação unifica:
+No Xibo CMS v4, o mecanismo nativo de personalização de marca (*White Label*) fica localizado na biblioteca compartilhada em:
+`/opt/bahiasul/xibo/shared/cms/library/brand/`
+
+A personalização unifica:
 - **Paleta de Cores Institucional**: Azul Escuro (`#0B3960`), Azul Médio (`#1B5693`) e Laranja Destaque (`#F26D21`).
 - **Tipografia**: Família de fontes `Montserrat` (ou `Open Sans`), utilizando títulos em maiúsculas (`UPPERCASE`) e destaques em negrito laranja.
-- **Logótipo Oficial**: Aplicação da marca oficial "Conexão BahiaSul - Internet feita para você!".
-- **Componentes e Cartões de Interface (UI Cards)**: Cantos arredondados de `8px`, fundo de cartão branco puro (`#FFFFFF`), borda superior e botões primários em laranja.
-- **Rodapé Institucional e Bordões**: Faixa em Azul Escuro e barra inferior em Laranja contendo os bordões da empresa:
-  - *"Internet feita para você!"*
-  - *"Faça sua parte, inspire outros e seja o exemplo!"*
+- **Logótipos Nativos**: Substituição dos arquivos `logo.svg`, `logo-dark.svg`, `logo-icon.svg`, `192x192.png` e `512x512.png`.
+- **Tema CSS Nativo (`theme.css`)**: Definição das variáveis de marca `--brand-primary: #0B3960;` e `--brand-accent: #F26D21;` combinadas às regras do Design System.
 
 ---
 
 ## Estrutura de Cores (Design System)
 
-| Categoria | Cor / Nome | Código Hex | Aplicação no Xibo CMS |
+| Categoria | Nome | Código Hex | Aplicação no Xibo CMS |
 |---|---|---|---|
-| **Cor Principal** | Azul Escuro | `#0B3960` | Cabeçalho, menu lateral, títulos H1/H3, rodapé e blocos principais |
-| **Cor Secundária** | Azul Médio | `#1B5693` | Estados de hover, alternância em listas/tabelas e navegação |
-| **Cor Destaque** | Laranja | `#F26D21` | Subtítulos H2, botões primários, alertas, barra de rodapé e destaques |
-| **Texto Principal** | Cinza Escuro | `#333333` | Corpo de texto e descrições gerais |
-| **Texto Inverso** | Branco Puro | `#FFFFFF` | Textos sobre fundos escuros (Azul/Laranja) |
-| **Fundo Geral** | Cinza Claro | `#F8F9FA` | Fundo das páginas do sistema |
-| **Fundo de Cartões**| Branco | `#FFFFFF` | Cartões de interface, tabelas e painéis |
+| **Cor Principal** | Azul Escuro | `#0B3960` | `--brand-primary`, cabeçalho, menu lateral, títulos H1/H3, rodapé |
+| **Cor Secundária** | Azul Médio | `#1B5693` | Estados de hover em itens de menu, destaque secundário e alternância |
+| **Cor Destaque** | Laranja | `#F26D21` | `--brand-accent`, subtítulos H2, botões primários e destaques |
+| **Texto Principal** | Cinza Escuro | `#333333` | Corpo de texto com legibilidade máxima (`#333333`) |
+| **Texto Inverso** | Branco | `#FFFFFF` | Texto sobre fundos escuros (Azul e Laranja) |
+| **Fundo Geral** | Cinza Claro | `#F8F9FA` | Fundo principal da aplicação |
+| **Fundo Cartão** | Branco Puro | `#FFFFFF` | Fundo de painéis e cartões horizontais de interface |
 
 ---
 
-## Diretrizes Tipográficas
+## Estrutura do Diretório de Marca Oficial (`library/brand/`)
 
-- **Família de Fontes**: `Montserrat`, `Open Sans` ou `Roboto` (Sans-serif).
-- **Título Principal (H1)**: Azul Escuro (`#0B3960`), Extra Negrito (Black 900), Maiúsculas (`UPPERCASE`). Ex: `"SISTEMA DE DESIGN"`.
-- **Subtítulo (H2)**: Laranja (`#F26D21`), Negrito (Bold 700), Maiúsculas (`UPPERCASE`). Ex: `"DIRETRIZES VISUAIS"`.
-- **Títulos de Cartões e Listas**: Azul Escuro (`#0B3960`), Negrito (Bold 700), Maiúsculas (`UPPERCASE`).
-- **Corpo de Texto**: `#333333` Regular (400) com **ênfase em laranja negrito**.
+No volume compartilhado do container Xibo CMS (`/opt/bahiasul/xibo/shared/cms/library/brand/`):
 
----
-
-## Estrutura de Arquivos de Implantação
-
-Os arquivos da personalização visual estão versionados no repositório em `custom/xibo/` e são aplicados no volume compartilhado do container Xibo CMS em `/opt/bahiasul/xibo/shared/cms/custom/`:
-
-| Arquivo | Destino no Xibo CMS | Função |
-|---|---|---|
-| [`custom/xibo/override.css`](file:///opt/bahiasul/ServidorTelas-BahiaSul/custom/xibo/override.css) | `/opt/bahiasul/xibo/shared/cms/custom/override.css` | Folha de estilos baseada no Design System oficial |
-| `custom/xibo/logo.png` | `/opt/bahiasul/xibo/shared/cms/custom/logo.png` | Logótipo oficial em alta definição para o cabeçalho |
-| `custom/xibo/logo-login.png` | `/opt/bahiasul/xibo/shared/cms/custom/logo-login.png` | Logótipo oficial para o cartão da tela de login |
+| Arquivo | Função Nativa no Xibo v4 |
+|---|---|
+| `logo.svg` | Logótipo principal da Conexão BahiaSul |
+| `logo-dark.svg` | Logótipo para fundo escuro do cabeçalho / barra superior |
+| `logo-icon.svg` | Ícone do logótipo para o topo da barra lateral (sidebar) |
+| `192x192.png` / `512x512.png` | Ícones de aplicativo e favicons da Conexão BahiaSul |
+| `theme.css` | Folha de estilos nativa do tema da marca |
 
 ---
 
 ## Procedimento de Implantação no Servidor
 
-Para aplicar a personalização visual reformulada no ambiente Docker do Xibo, execute os seguintes comandos no servidor `servidortelas`:
+Para aplicar as logos e o tema visual diretamente no diretório nativo de marca do Xibo CMS, execute os comandos abaixo no servidor:
 
 ```bash
-# 1. Copiar os arquivos customizados para o diretório compartilhado do Xibo
-sudo cp /opt/bahiasul/ServidorTelas-BahiaSul/custom/xibo/* /opt/bahiasul/xibo/shared/cms/custom/
+# 1. Copiar as logos oficiais da Conexão BahiaSul para o diretório nativo da marca no Xibo
+sudo cp -f /opt/bahiasul/ServidorTelas-BahiaSul/custom/xibo/logo.png /opt/bahiasul/xibo/shared/cms/library/brand/logo.svg
+sudo cp -f /opt/bahiasul/ServidorTelas-BahiaSul/custom/xibo/logo.png /opt/bahiasul/xibo/shared/cms/library/brand/logo-dark.svg
+sudo cp -f /opt/bahiasul/ServidorTelas-BahiaSul/custom/xibo/logo.png /opt/bahiasul/xibo/shared/cms/library/brand/logo-icon.svg
+sudo cp -f /opt/bahiasul/ServidorTelas-BahiaSul/custom/xibo/logo.png /opt/bahiasul/xibo/shared/cms/library/brand/192x192.png
+sudo cp -f /opt/bahiasul/ServidorTelas-BahiaSul/custom/xibo/logo.png /opt/bahiasul/xibo/shared/cms/library/brand/512x512.png
 
-# 2. Ajustar as permissões para o usuário do servidor web (www-data)
-sudo chown -R www-data:www-data /opt/bahiasul/xibo/shared/cms/custom/
-sudo chmod 644 /opt/bahiasul/xibo/shared/cms/custom/*
+# 2. Configurar as variáveis e estilos do Design System no theme.css da marca
+sudo bash -c "cat << 'EOF' > /opt/bahiasul/xibo/shared/cms/library/brand/theme.css
+/* Brand theme CSS — Conexão BahiaSul Design System */
+:root {
+    --brand-primary: #0B3960;
+    --brand-accent: #F26D21;
+}
+EOF
+cat /opt/bahiasul/ServidorTelas-BahiaSul/custom/xibo/override.css >> /opt/bahiasul/xibo/shared/cms/library/brand/theme.css
+"
+
+# 3. Ajustar permissões e reiniciar os containers do Xibo
+sudo chown -R www-data:www-data /opt/bahiasul/xibo/shared/cms/library/brand/
+sudo chmod -R 775 /opt/bahiasul/xibo/shared/cms/library/brand/
+sudo docker restart xibo-cms-web-1 xibo-cms-memcached-1
 ```
-
----
-
-## Configurações no Painel Administrativo do Xibo CMS
-
-Acesse `http://10.98.254.189/` e navegue até **Administração** (`Administration`) ➔ **Configurações** (`Settings`) ➔ **Regional / Aparência**:
-
-- **Nome da Instância (`Instance Name`)**: `Conexão BahiaSul`
-- **Título da Aplicação (`Application Title`)**: `Servidor de Telas BahiaSul`
-- **URL do Logo (`Logo URL`)**: `/custom/logo.png`
-- **URL do Logo de Login (`Login Logo URL`)**: `/custom/logo-login.png`
-
-Salvar e recarregar o navegador (`Ctrl + F5`).

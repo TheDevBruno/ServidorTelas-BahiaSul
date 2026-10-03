@@ -52,6 +52,7 @@ http://10.98.254.189
 
 - [Instalação](instalacao.md)
 - [Configuração](configuracao.md)
+- [Personalização Visual / Branding](personalizacao.md)
 - [Operação](operacao.md)
 - [Backup](backup.md)
 - [Troubleshooting](troubleshooting.md)

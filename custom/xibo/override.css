@@ -1,0 +1,158 @@
+/* ==========================================================================
+   Xibo CMS — Personalização Visual Conexão BahiaSul Mídia Indoor
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+:root {
+    --bahiasul-primary: #004b87;
+    --bahiasul-primary-hover: #003663;
+    --bahiasul-secondary: #005f9e;
+    --bahiasul-accent: #00a896;
+    --bahiasul-bg-dark: #0f172a;
+    --bahiasul-card-bg: #1e293b;
+    --bahiasul-text: #1e293b;
+    --bahiasul-text-light: #f8fafc;
+    --bahiasul-border-radius: 8px;
+    --bahiasul-shadow: 0 10px 25px -5px rgba(0, 75, 135, 0.15), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+}
+
+body {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif !important;
+    background-color: #f4f6f9;
+}
+
+/* Header & Top Navbar */
+.navbar-default, .navbar-inverse, .main-header, header.navbar {
+    background: linear-gradient(135deg, var(--bahiasul-primary) 0%, var(--bahiasul-secondary) 100%) !important;
+    border: none !important;
+    box-shadow: 0 4px 15px rgba(0, 75, 135, 0.2);
+}
+
+.navbar-default .navbar-brand, .navbar-inverse .navbar-brand, .navbar-brand {
+    color: var(--bahiasul-text-light) !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.5px;
+}
+
+.navbar-default .navbar-nav > li > a, .navbar-inverse .navbar-nav > li > a {
+    color: rgba(255, 255, 255, 0.9) !important;
+    font-weight: 500;
+    transition: all 0.2s ease-in-out;
+}
+
+.navbar-default .navbar-nav > li > a:hover, 
+.navbar-inverse .navbar-nav > li > a:hover,
+.navbar-default .navbar-nav > li > a:focus {
+    color: #ffffff !important;
+    background-color: rgba(255, 255, 255, 0.15) !important;
+    border-radius: 6px;
+}
+
+/* Sidebar Navigation */
+.sidebar, .main-sidebar, .left-side, #sidebar-wrapper {
+    background-color: var(--bahiasul-bg-dark) !important;
+}
+
+.sidebar .nav-link, .sidebar a, #sidebar-wrapper .list-group-item {
+    color: #94a3b8 !important;
+    border-radius: 6px;
+    margin: 2px 8px;
+    transition: all 0.2s ease;
+}
+
+.sidebar .nav-link:hover, .sidebar a:hover, #sidebar-wrapper .list-group-item:hover {
+    color: #ffffff !important;
+    background-color: var(--bahiasul-secondary) !important;
+}
+
+.sidebar .nav-link.active, .sidebar li.active > a {
+    color: #ffffff !important;
+    background-color: var(--bahiasul-primary) !important;
+    font-weight: 600;
+    box-shadow: 0 2px 8px rgba(0, 75, 135, 0.4);
+}
+
+/* Login Page Styling */
+body.login-page, .login-box, .login-wrapper {
+    background: linear-gradient(135deg, #0f172a 0%, #004b87 50%, #00a896 100%) !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+.login-box-body, .login-card-body, .panel-login {
+    background: rgba(255, 255, 255, 0.95) !important;
+    backdrop-filter: blur(10px);
+    border-radius: 12px !important;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3) !important;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 35px !important;
+}
+
+.login-logo a, .login-header {
+    color: var(--bahiasul-primary) !important;
+    font-weight: 700 !important;
+    font-size: 24px !important;
+}
+
+.login-box-msg {
+    color: #64748b !important;
+    font-size: 14px;
+    margin-bottom: 20px;
+}
+
+/* Buttons */
+.btn-primary, button[type="submit"], input[type="submit"].btn-primary {
+    background: linear-gradient(135deg, var(--bahiasul-primary) 0%, var(--bahiasul-secondary) 100%) !important;
+    border: none !important;
+    border-radius: 6px !important;
+    font-weight: 600 !important;
+    padding: 10px 20px !important;
+    box-shadow: 0 4px 12px rgba(0, 75, 135, 0.3) !important;
+    transition: all 0.25s ease-in-out !important;
+}
+
+.btn-primary:hover, button[type="submit"]:hover {
+    background: linear-gradient(135deg, var(--bahiasul-primary-hover) 0%, var(--bahiasul-primary) 100%) !important;
+    transform: translateY(-1px);
+    box-shadow: 0 6px 16px rgba(0, 75, 135, 0.4) !important;
+}
+
+/* Cards & Tables */
+.card, .panel, .box {
+    border-radius: var(--bahiasul-border-radius) !important;
+    border: 1px solid #e2e8f0 !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04) !important;
+}
+
+.card-header, .panel-heading, .box-header {
+    background-color: #ffffff !important;
+    border-bottom: 2px solid #f1f5f9 !important;
+    font-weight: 600;
+    color: var(--bahiasul-primary);
+}
+
+.table thead th {
+    background-color: #f8fafc !important;
+    color: var(--bahiasul-primary) !important;
+    font-weight: 600 !important;
+    border-bottom: 2px solid #e2e8f0 !important;
+}
+
+/* Badges & Status */
+.badge-primary, .label-primary {
+    background-color: var(--bahiasul-primary) !important;
+}
+
+.badge-info, .label-info {
+    background-color: var(--bahiasul-accent) !important;
+}
+
+/* Footer Custom Branding */
+footer.main-footer, .footer {
+    border-top: 1px solid #e2e8f0 !important;
+    color: #64748b !important;
+    font-size: 12px;
+}

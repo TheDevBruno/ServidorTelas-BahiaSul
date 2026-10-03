@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Xibo CMS — Design System Conexão BahiaSul (Alta Visibilidade & Contraste)
+   Xibo CMS — Design System Conexão BahiaSul (Ajuste Fino de Botões & Tabelas)
    ========================================================================== */
 
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap');
@@ -24,30 +24,25 @@ body {
 }
 
 /* 1. BARRA SUPERIOR (HEADER / TOP NAVBAR) */
-header, .main-header, .navbar, .navbar-default, nav.navbar, div[class*="header"], div[class*="navbar"] {
+header, .main-header, nav.navbar, header.navbar {
     background-color: var(--bahiasul-azul-escuro) !important;
     border-bottom: 3px solid var(--bahiasul-laranja) !important;
-    box-shadow: 0 4px 12px rgba(11, 57, 96, 0.25) !important;
+    box-shadow: 0 4px 12px rgba(11, 57, 96, 0.2) !important;
 }
 
-/* Texto e Título na Barra Superior (Dashboard, Ícones, Usuário) */
-header *, .navbar *, nav.navbar *, div[class*="header"] *, div[class*="navbar"] * {
-    color: #FFFFFF !important;
-}
-
-header a, .navbar a, .navbar-brand, .page-title, h1.page-title {
+/* Título e Links do Header */
+header .navbar-brand, header .page-title, header a, nav.navbar a, .main-header a, header .nav-link {
     color: #FFFFFF !important;
     font-weight: 700 !important;
     font-family: 'Montserrat', sans-serif !important;
 }
 
 /* 2. BARRA LATERAL (SIDEBAR) */
-aside, .sidebar, .main-sidebar, #sidebar-wrapper, div[class*="sidebar"], nav[class*="sidebar"] {
-    background-color: #072540 !important; /* Azul Escuro BahiaSul Profundo */
+aside, .sidebar, .main-sidebar, #sidebar-wrapper, div[class*="sidebar"] {
+    background-color: #072540 !important;
 }
 
-/* Links do Menu Lateral */
-.sidebar a, .main-sidebar a, aside a, nav[class*="sidebar"] a, .nav-link {
+.sidebar a, .main-sidebar a, aside a, .sidebar .nav-link {
     color: #E2E8F0 !important;
     font-family: 'Montserrat', sans-serif !important;
     font-weight: 600 !important;
@@ -58,46 +53,68 @@ aside, .sidebar, .main-sidebar, #sidebar-wrapper, div[class*="sidebar"], nav[cla
     transition: all 0.2s ease-in-out !important;
 }
 
-/* Hover nos Itens do Menu */
-.sidebar a:hover, .main-sidebar a:hover, aside a:hover, .nav-link:hover {
+.sidebar a:hover, .main-sidebar a:hover, aside a:hover {
     background-color: var(--bahiasul-azul-medio) !important;
     color: #FFFFFF !important;
 }
 
-/* Item Ativo do Menu (Ex: Agendamento, Design, Dashboard) */
-.sidebar .active > a, .sidebar a.active, aside a.active, .nav-link.active, li.active > a {
+.sidebar .active > a, .sidebar a.active, aside a.active, .sidebar li.active > a {
     background-color: var(--bahiasul-laranja) !important;
     color: #FFFFFF !important;
     font-weight: 800 !important;
     box-shadow: 0 4px 12px rgba(242, 109, 33, 0.4) !important;
 }
 
-/* 3. LOGO DA BAHIASUL */
-.navbar-brand img, .sidebar-header img, [class*="logo"] img, header img, aside img {
-    max-height: 44px !important;
-    width: auto !important;
-    object-fit: contain !important;
-}
-
-/* 4. CARTÕES E PAINÉIS DA INTERFACE */
-.card, .panel, .box, div[class*="card"] {
+/* 3. NAVEGAÇÃO POR ABAS (TABS: Usuários, Configurações, Manutenção...) */
+.nav-tabs, .nav-pills, div[class*="tabs"] {
+    border-bottom: 2px solid #E2E8F0 !important;
     background-color: #FFFFFF !important;
-    border-radius: 8px !important;
-    border: 1px solid #E2E8F0 !important;
-    box-shadow: 0 4px 12px rgba(11, 57, 96, 0.06) !important;
 }
 
-/* Títulos dos Cartões (RESUMO DOS PLAYERS, ÚLTIMAS NOTÍCIAS, ETC) */
-.card-title, .panel-heading, .box-title, h2, h3, h4, [class*="card-header"] {
-    font-family: 'Montserrat', sans-serif !important;
+.nav-tabs .nav-link, .nav-tabs > li > a {
     color: var(--bahiasul-azul-escuro) !important;
-    font-weight: 800 !important;
-    text-transform: uppercase !important;
-    letter-spacing: 0.5px !important;
+    font-family: 'Montserrat', sans-serif !important;
+    font-weight: 700 !important;
+    font-size: 13px !important;
+    border: none !important;
+    padding: 12px 20px !important;
 }
 
-/* 5. BOTÕES PRIMÁRIOS */
-.btn-primary, button[type="submit"], .btn-orange {
+.nav-tabs .nav-link.active, .nav-tabs > li.active > a {
+    color: var(--bahiasul-laranja) !important;
+    border-bottom: 3px solid var(--bahiasul-laranja) !important;
+    background-color: transparent !important;
+    font-weight: 800 !important;
+}
+
+/* 4. BARRA DE FERRAMENTAS DE TABELAS & BOTÕES (Columns, Imprimir, CSV, Atualizar) */
+.table-toolbar, .dt-buttons, .btn-toolbar, div[class*="toolbar"], div[class*="buttons-wrapper"] {
+    background-color: #FFFFFF !important;
+    padding: 10px 15px !important;
+    border-radius: 8px 8px 0 0 !important;
+    border-bottom: 1px solid #E2E8F0 !important;
+}
+
+/* Estilização Correta dos Botões de Ação da Tabela */
+.dt-button, .btn-default, .btn-secondary, .btn-outline-secondary, .btn-light, .btn-group .btn {
+    background-color: var(--bahiasul-azul-escuro) !important;
+    color: #FFFFFF !important;
+    font-family: 'Montserrat', sans-serif !important;
+    font-weight: 600 !important;
+    border: none !important;
+    border-radius: 6px !important;
+    padding: 8px 16px !important;
+    margin: 2px 4px !important;
+    transition: all 0.2s ease !important;
+}
+
+.dt-button:hover, .btn-default:hover, .btn-secondary:hover, .btn-light:hover, .btn-group .btn:hover {
+    background-color: var(--bahiasul-azul-medio) !important;
+    color: #FFFFFF !important;
+}
+
+/* 5. BOTÕES DE AÇÃO PRINCIPAL (Ex: + Adicionar Manutenção) */
+.btn-primary, button[type="submit"], .btn-orange, .btn-success, [class*="btn-add"] {
     background-color: var(--bahiasul-laranja) !important;
     color: #FFFFFF !important;
     font-family: 'Montserrat', sans-serif !important;
@@ -105,7 +122,7 @@ aside, .sidebar, .main-sidebar, #sidebar-wrapper, div[class*="sidebar"], nav[cla
     text-transform: uppercase !important;
     border: none !important;
     border-radius: 6px !important;
-    padding: 10px 20px !important;
+    padding: 9px 22px !important;
     box-shadow: 0 4px 10px rgba(242, 109, 33, 0.3) !important;
     transition: all 0.2s ease-in-out !important;
 }
@@ -113,15 +130,32 @@ aside, .sidebar, .main-sidebar, #sidebar-wrapper, div[class*="sidebar"], nav[cla
 .btn-primary:hover, button[type="submit"]:hover {
     background-color: var(--bahiasul-laranja-hover) !important;
     box-shadow: 0 6px 14px rgba(242, 109, 33, 0.4) !important;
+    color: #FFFFFF !important;
 }
 
-/* 6. TABELAS */
-.table thead th {
+/* 6. CARTÕES E CAMPOS DE FORMULÁRIO */
+.card, .panel, .box, div[class*="card"] {
+    background-color: #FFFFFF !important;
+    border-radius: 8px !important;
+    border: 1px solid #E2E8F0 !important;
+    box-shadow: 0 4px 12px rgba(11, 57, 96, 0.06) !important;
+}
+
+input.form-control, select.form-control, textarea.form-control {
+    background-color: #FFFFFF !important;
+    color: var(--bahiasul-texto-escuro) !important;
+    border: 1px solid #CBD5E1 !important;
+    border-radius: 6px !important;
+}
+
+/* 7. CABEÇALHOS DAS TABELAS */
+.table thead th, table th {
     background-color: var(--bahiasul-azul-escuro) !important;
     color: #FFFFFF !important;
     font-family: 'Montserrat', sans-serif !important;
     font-weight: 700 !important;
     text-transform: uppercase !important;
+    border: none !important;
 }
 
 /* Rodapé */

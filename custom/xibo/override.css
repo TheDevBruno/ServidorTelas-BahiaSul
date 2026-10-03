@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Xibo CMS — Design System Conexão BahiaSul (Alta Visibilidade & Layout Designer)
+   Xibo CMS — Design System Conexão BahiaSul (Ajustes de Logo & Título 32px)
    ========================================================================== */
 
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap');
@@ -23,11 +23,43 @@ body {
     color: var(--bahiasul-texto-escuro) !important;
 }
 
+/* ==========================================================================
+   AJUSTES ESPECÍFICOS SOLICITADOS PELO USUÁRIO (LOGO & TÍTULO DASHBOARD)
+   ========================================================================== */
+
+/* 1. AUMENTAR TAMANHO DA LOGO (Maior que 77px) */
+img[src*="/brand/logo"], img[alt="Xibo"], img[alt="BahiaSul"], .object-contain.object-left, img.w-\[77\.287px\] {
+    width: 210px !important;
+    min-width: 180px !important;
+    max-width: 260px !important;
+    height: 52px !important;
+    max-height: 58px !important;
+    object-fit: contain !important;
+    object-position: left center !important;
+}
+
+/* 2. TÍTULO DO DASHBOARD / PÁGINA (32px & BRANCO PURO #FFFFFF) */
+.flex.align-middle.font-semibold.text-\[16px\],
+div[class*="text-[16px]"],
+div.flex.align-middle.font-semibold,
+header div.flex.align-middle,
+.main-header div.flex.align-middle {
+    font-size: 32px !important;
+    font-weight: 800 !important;
+    color: #FFFFFF !important;
+    font-family: 'Montserrat', sans-serif !important;
+    letter-spacing: 0.5px !important;
+    line-height: 1.2 !important;
+}
+
 /* 1. BARRA SUPERIOR (HEADER / TOP NAVBAR) */
 header, .main-header, nav.navbar, header.navbar {
     background-color: var(--bahiasul-azul-escuro) !important;
     border-bottom: 3px solid var(--bahiasul-laranja) !important;
     box-shadow: 0 4px 12px rgba(11, 57, 96, 0.2) !important;
+    min-height: 64px !important;
+    padding-top: 4px !important;
+    padding-bottom: 4px !important;
 }
 
 /* Título e Links do Header */
@@ -132,24 +164,17 @@ aside, .sidebar, .main-sidebar, #sidebar-wrapper, div[class*="sidebar"] {
     color: #FFFFFF !important;
 }
 
-/* ==========================================================================
-   6. CORREÇÃO ESPECÍFICA DO LAYOUT DESIGNER (XIBO 4.5.3)
-   Classes: .container-toolbar, .toolbar-pane, .toolbar-widgets-pane, .toolbar-card
-   ========================================================================== */
-
-/* 6.1 Container Principal da Toolbar */
+/* 6. CORREÇÃO ESPECÍFICA DO LAYOUT DESIGNER (XIBO 4.5.3) */
 .container-toolbar, [class*="container-toolbar"] {
-    background-color: #072540 !important; /* Azul Profundo */
+    background-color: #072540 !important;
     border-right: 1px solid #0B3960 !important;
 }
 
-/* 6.2 Paineis e Abas da Toolbar (toolbar-pane, toolbar-widgets-pane) */
 .toolbar-pane, .toolbar-widgets-pane, [class*="toolbar-pane"], [class*="toolbar-widgets"] {
     background-color: #072540 !important;
     color: #FFFFFF !important;
 }
 
-/* Botões e Ícones Inativos dentro dos Paineis da Toolbar */
 .toolbar-pane button, .toolbar-pane a, .toolbar-pane i, .toolbar-pane svg,
 .toolbar-widgets-pane button, .toolbar-widgets-pane i, .toolbar-widgets-pane svg,
 .container-toolbar button i, .container-toolbar button svg,
@@ -159,7 +184,6 @@ aside, .sidebar, .main-sidebar, #sidebar-wrapper, div[class*="sidebar"] {
     opacity: 1 !important;
 }
 
-/* Estado de Hover nos Itens/Botões da Toolbar */
 .toolbar-pane button:hover, .toolbar-pane a:hover,
 .toolbar-widgets-pane button:hover, .container-toolbar button:hover,
 [class*="toolbar-pane"] button:hover {
@@ -167,7 +191,6 @@ aside, .sidebar, .main-sidebar, #sidebar-wrapper, div[class*="sidebar"] {
     color: #FFFFFF !important;
 }
 
-/* Painel/Aba Ativa (toolbar-widgets-pane.active) */
 .toolbar-pane.active, .toolbar-widgets-pane.active,
 .container-toolbar .active, .toolbar-pane button.active,
 [class*="toolbar-pane"].active, [class*="toolbar-pane"] button.active {
@@ -182,7 +205,6 @@ aside, .sidebar, .main-sidebar, #sidebar-wrapper, div[class*="sidebar"] {
     fill: #FFFFFF !important;
 }
 
-/* 6.3 Cartões dos Widgets (toolbar-card) */
 .toolbar-card, [class*="toolbar-card"] {
     background-color: #FFFFFF !important;
     border: 1px solid #CBD5E1 !important;
@@ -199,7 +221,6 @@ aside, .sidebar, .main-sidebar, #sidebar-wrapper, div[class*="sidebar"] {
     transform: translateY(-2px) !important;
 }
 
-/* Texto dentro dos Cartões de Widgets */
 .toolbar-card *, .toolbar-card p, .toolbar-card span, .toolbar-card div, .toolbar-card label, [class*="toolbar-card"] * {
     color: var(--bahiasul-azul-escuro) !important;
     font-family: 'Montserrat', sans-serif !important;
@@ -212,7 +233,6 @@ aside, .sidebar, .main-sidebar, #sidebar-wrapper, div[class*="sidebar"] {
     white-space: normal !important;
 }
 
-/* Ícones dos Widgets nos Cartões */
 .toolbar-card i, .toolbar-card svg, .toolbar-card img, [class*="toolbar-card"] i, [class*="toolbar-card"] svg {
     color: var(--bahiasul-laranja) !important;
     fill: var(--bahiasul-laranja) !important;
@@ -220,7 +240,6 @@ aside, .sidebar, .main-sidebar, #sidebar-wrapper, div[class*="sidebar"] {
     margin-bottom: 4px !important;
 }
 
-/* 6.4 Campos de Formulário e Rótulos no Conteúdo da Toolbar */
 .toolbar-pane label, .container-toolbar label, [class*="toolbar"] label {
     color: #FFFFFF !important;
     font-family: 'Montserrat', sans-serif !important;

@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 60" width="320" height="60">
+  <g transform="translate(5, 2)">
+    <path d="M 12 36 A 15 15 0 0 1 38 36" fill="none" stroke="#F26D21" stroke-width="4" stroke-linecap="round"/>
+    <path d="M 7 27 A 22 22 0 0 1 43 27" fill="none" stroke="#F26D21" stroke-width="4" stroke-linecap="round"/>
+    <path d="M 2 18 A 29 29 0 0 1 48 18" fill="none" stroke="#F26D21" stroke-width="4" stroke-linecap="round"/>
+    <circle cx="25" cy="43" r="3.5" fill="#F26D21"/>
+  </g>
+  <text x="65" y="24" font-family="'Montserrat', 'Open Sans', sans-serif" font-weight="900" font-size="13" fill="#FFFFFF" letter-spacing="2.5">CONEXÃO</text>
+  <text x="65" y="49" font-family="'Montserrat', 'Open Sans', sans-serif" font-weight="900" font-size="24" fill="#FFFFFF">Bahia<tspan fill="#F26D21">Sul</tspan></text>
+</svg>

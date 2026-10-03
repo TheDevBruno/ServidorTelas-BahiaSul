@@ -53,6 +53,7 @@ http://10.98.254.189
 - [Instalação](instalacao.md)
 - [Configuração](configuracao.md)
 - [Personalização Visual / Branding](personalizacao.md)
+- [Layouts, RSS Feeds e Widgets](layouts_widgets.md)
 - [Operação](operacao.md)
 - [Backup](backup.md)
 - [Troubleshooting](troubleshooting.md)

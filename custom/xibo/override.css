@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Xibo CMS — Design System Conexão BahiaSul (Ajustes de Logo & Título 32px)
+   Xibo CMS — Design System Conexão BahiaSul (Branding & Global Override)
    ========================================================================== */
 
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap');
@@ -24,11 +24,38 @@ body {
 }
 
 /* ==========================================================================
-   AJUSTES ESPECÍFICOS SOLICITADOS PELO USUÁRIO (LOGO & TÍTULO DASHBOARD)
+   1. TELA DE LOGIN & LOGO CENTRALIZADA
    ========================================================================== */
 
-/* 1. AUMENTAR TAMANHO DA LOGO (Maior que 77px) */
-img[src*="/brand/logo"], img[alt="Xibo"], img[alt="BahiaSul"], .object-contain.object-left, img.w-\[77\.287px\] {
+.login-card-logo, p.login-card-logo, div.login-card-logo {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    text-align: center !important;
+    margin: 0 auto 20px auto !important;
+    width: 100% !important;
+}
+
+.login-card-logo a {
+    display: inline-flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    margin: 0 auto !important;
+}
+
+.login-card-logo img {
+    max-height: 85px !important;
+    width: auto !important;
+    object-fit: contain !important;
+    margin: 0 auto !important;
+}
+
+/* ==========================================================================
+   2. TAMANHO DA LOGO DO HEADER & TÍTULO DA PÁGINA (32px BRANCO PURO)
+   ========================================================================== */
+
+/* Logo do Cabeçalho Maior que 77px */
+img[src*="/brand/logo"], img[alt="Xibo"], img[alt="BahiaSul"], img[alt="Logo"], .object-contain.object-left, img.w-\[77\.287px\] {
     width: 210px !important;
     min-width: 180px !important;
     max-width: 260px !important;
@@ -38,7 +65,7 @@ img[src*="/brand/logo"], img[alt="Xibo"], img[alt="BahiaSul"], .object-contain.o
     object-position: left center !important;
 }
 
-/* 2. TÍTULO DO DASHBOARD / PÁGINA (32px & BRANCO PURO #FFFFFF) */
+/* Título do Dashboard (32px & Branco Puro #FFFFFF) */
 .flex.align-middle.font-semibold.text-\[16px\],
 div[class*="text-[16px]"],
 div.flex.align-middle.font-semibold,
@@ -52,7 +79,7 @@ header div.flex.align-middle,
     line-height: 1.2 !important;
 }
 
-/* 1. BARRA SUPERIOR (HEADER / TOP NAVBAR) */
+/* 3. BARRA SUPERIOR (HEADER / TOP NAVBAR) */
 header, .main-header, nav.navbar, header.navbar {
     background-color: var(--bahiasul-azul-escuro) !important;
     border-bottom: 3px solid var(--bahiasul-laranja) !important;
@@ -69,7 +96,7 @@ header .navbar-brand, header .page-title, header a, nav.navbar a, .main-header a
     font-family: 'Montserrat', sans-serif !important;
 }
 
-/* 2. BARRA LATERAL PRINCIPAL (SIDEBAR GERAL) */
+/* 4. BARRA LATERAL PRINCIPAL (SIDEBAR GERAL) */
 aside, .sidebar, .main-sidebar, #sidebar-wrapper, div[class*="sidebar"] {
     background-color: #072540 !important;
 }
@@ -97,7 +124,7 @@ aside, .sidebar, .main-sidebar, #sidebar-wrapper, div[class*="sidebar"] {
     box-shadow: 0 4px 12px rgba(242, 109, 33, 0.4) !important;
 }
 
-/* 3. NAVEGAÇÃO POR ABAS (TABS: Usuários, Configurações, Manutenção...) */
+/* 5. NAVEGAÇÃO POR ABAS (TABS: Usuários, Configurações, Manutenção...) */
 .nav-tabs, .nav-pills, div[class*="tabs"] {
     border-bottom: 2px solid #E2E8F0 !important;
     background-color: #FFFFFF !important;
@@ -119,7 +146,7 @@ aside, .sidebar, .main-sidebar, #sidebar-wrapper, div[class*="sidebar"] {
     font-weight: 800 !important;
 }
 
-/* 4. BARRA DE FERRAMENTAS DE TABELAS & BOTÕES */
+/* 6. BARRA DE FERRAMENTAS DE TABELAS & BOTÕES */
 .table-toolbar, .dt-buttons, .btn-toolbar, div[class*="toolbar-buttons"] {
     background-color: #FFFFFF !important;
     padding: 10px 15px !important;
@@ -144,7 +171,7 @@ aside, .sidebar, .main-sidebar, #sidebar-wrapper, div[class*="sidebar"] {
     color: #FFFFFF !important;
 }
 
-/* 5. BOTÕES DE AÇÃO PRINCIPAL */
+/* 7. BOTÕES DE AÇÃO PRINCIPAL */
 .btn-primary, button[type="submit"], .btn-orange, .btn-success, [class*="btn-add"] {
     background-color: var(--bahiasul-laranja) !important;
     color: #FFFFFF !important;
@@ -164,7 +191,7 @@ aside, .sidebar, .main-sidebar, #sidebar-wrapper, div[class*="sidebar"] {
     color: #FFFFFF !important;
 }
 
-/* 6. CORREÇÃO ESPECÍFICA DO LAYOUT DESIGNER (XIBO 4.5.3) */
+/* 8. CORREÇÃO ESPECÍFICA DO LAYOUT DESIGNER (XIBO 4.5.3) */
 .container-toolbar, [class*="container-toolbar"] {
     background-color: #072540 !important;
     border-right: 1px solid #0B3960 !important;
@@ -254,7 +281,7 @@ aside, .sidebar, .main-sidebar, #sidebar-wrapper, div[class*="sidebar"] {
     border-radius: 6px !important;
 }
 
-/* 7. CARTÕES E CAMPOS DE FORMULÁRIO GERAIS */
+/* 9. CARTÕES E CAMPOS DE FORMULÁRIO GERAIS */
 .card, .panel, .box {
     background-color: #FFFFFF !important;
     border-radius: 8px !important;
@@ -269,7 +296,7 @@ input.form-control, select.form-control, textarea.form-control {
     border-radius: 6px !important;
 }
 
-/* 8. CABEÇALHOS DAS TABELAS */
+/* 10. CABEÇALHOS DAS TABELAS */
 .table thead th, table th {
     background-color: var(--bahiasul-azul-escuro) !important;
     color: #FFFFFF !important;

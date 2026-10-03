@@ -45,11 +45,20 @@ Este documento orienta a criação, estruturação e estilização de **Layouts,
   - *Fade / Carrossel com Intervalo* para blocos de notícias na lateral.
 - **Duração de Exibição por Item**: `10` segundos.
 
-### 2.3 Template de Estilização HTML/CSS do Ticker (Design System)
+### 2.3 Como Adicionar o HTML Template e CSS no Xibo CMS v4
 
-No campo **Appearance / Template** do Widget Ticker, insira a estrutura estilizada com as cores e tipografia da Conexão BahiaSul:
+No Xibo v4, a edição do código HTML/CSS do Ticker fica oculta por padrão até você ativar a opção de substituição de modelo:
 
-#### HTML Template:
+1. **Clique sobre o Widget Ticker** que está dentro da região no Designer de Layout.
+2. No painel de propriedades que abre no lado direito da tela, clique na aba **Aparência** (*Appearance*).
+3. Procure e marque a opção **"Substituir o modelo?"** (*Override the template?*).
+4. Ao marcar essa caixa, o Xibo irá exibir duas caixas de texto de código:
+   - **Modelo Principal** (*Main Template / HTML*): Cole o código HTML abaixo.
+   - **Folha de Estilo** (*Style Sheet / CSS*): Cole o código CSS abaixo.
+
+---
+
+#### HTML Template (Cole na caixa "Modelo Principal"):
 ```html
 <div class="bahiasul-ticker-item">
     <span class="ticker-badge">NOTÍCIAS</span>
@@ -58,7 +67,7 @@ No campo **Appearance / Template** do Widget Ticker, insira a estrutura estiliza
 </div>
 ```
 
-#### CSS Override (na aba CSS do Widget ou no override.css global):
+#### CSS Override (Cole na caixa "Folha de Estilo" ou mantenha no override.css global):
 ```css
 .bahiasul-ticker-item {
     display: inline-flex;

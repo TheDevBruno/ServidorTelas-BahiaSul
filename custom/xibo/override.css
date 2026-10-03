@@ -34,6 +34,31 @@ body {
     color: var(--bahiasul-texto-principal) !important;
 }
 
+/* Substituição da Logo Padrão Xibo (SVG/Img) pela Logo Conexão BahiaSul */
+.navbar-brand, .sidebar-header, .brand-logo, [class*="brand"], [class*="logo"], .logo-container {
+    background-image: url("/userscripts/logo.png") !important;
+    background-size: contain !important;
+    background-repeat: no-repeat !important;
+    background-position: left center !important;
+    min-height: 50px !important;
+    min-width: 160px !important;
+}
+
+/* Ocultar o ícone SVG inline original do Xibo na barra lateral */
+.navbar-brand svg, .sidebar-header svg, [class*="brand"] svg, [class*="logo"] svg, aside svg, nav svg {
+    opacity: 0 !important;
+    width: 0 !important;
+    height: 0 !important;
+    visibility: hidden !important;
+}
+
+/* Se for elemento de imagem original, forçar exibição da logo BahiaSul */
+.navbar-brand img, .sidebar-header img, [class*="logo"] img {
+    content: url("/userscripts/logo.png") !important;
+    max-height: 48px !important;
+    width: auto !important;
+}
+
 /* Tipografia — Títulos em Maiúsculas conforme Design System */
 h1, .h1, .page-title, .content-header h1 {
     font-family: 'Montserrat', sans-serif !important;
@@ -64,8 +89,8 @@ b, strong, .text-highlight, span.highlight {
     font-weight: 700;
 }
 
-/* Cabeçalho (Header) */
-.navbar-default, .navbar-inverse, .main-header, header.navbar {
+/* Cabeçalho e Barra Superior */
+.navbar-default, .navbar-inverse, .main-header, header.navbar, header, nav.navbar {
     background-color: var(--bahiasul-azul-escuro) !important;
     border-bottom: 3px solid var(--bahiasul-laranja) !important;
     box-shadow: 0 4px 10px rgba(11, 57, 96, 0.2);
@@ -102,11 +127,11 @@ b, strong, .text-highlight, span.highlight {
 }
 
 /* Barra Lateral (Sidebar) */
-.sidebar, .main-sidebar, .left-side, #sidebar-wrapper {
+.sidebar, .main-sidebar, .left-side, #sidebar-wrapper, aside.main-sidebar, aside.sidebar {
     background-color: var(--bahiasul-azul-escuro) !important;
 }
 
-.sidebar .nav-link, .sidebar a, #sidebar-wrapper .list-group-item {
+.sidebar .nav-link, .sidebar a, #sidebar-wrapper .list-group-item, aside a {
     color: #D1E0EE !important;
     font-weight: 500;
     border-radius: 6px;
@@ -114,12 +139,12 @@ b, strong, .text-highlight, span.highlight {
     transition: all 0.2s ease;
 }
 
-.sidebar .nav-link:hover, .sidebar a:hover, #sidebar-wrapper .list-group-item:hover {
+.sidebar .nav-link:hover, .sidebar a:hover, #sidebar-wrapper .list-group-item:hover, aside a:hover {
     color: var(--bahiasul-texto-inverso) !important;
     background-color: var(--bahiasul-azul-medio) !important;
 }
 
-.sidebar .nav-link.active, .sidebar li.active > a {
+.sidebar .nav-link.active, .sidebar li.active > a, aside a.active {
     color: var(--bahiasul-texto-inverso) !important;
     background-color: var(--bahiasul-laranja) !important;
     font-weight: 700 !important;
@@ -204,6 +229,7 @@ body.login-page, .login-box, .login-wrapper {
 }
 
 .login-logo img, .login-header img {
+    content: url("/userscripts/logo-login.png") !important;
     max-height: 90px;
     margin-bottom: 20px;
 }
@@ -239,21 +265,4 @@ footer.main-footer, .footer {
     border-top: 4px solid var(--bahiasul-laranja) !important;
     padding: 15px 25px !important;
     font-family: 'Montserrat', sans-serif !important;
-}
-
-footer .footer-slogan {
-    font-weight: 700;
-    color: var(--bahiasul-texto-inverso);
-    font-size: 14px;
-}
-
-footer .footer-subbar {
-    background-color: var(--bahiasul-laranja);
-    color: var(--bahiasul-texto-inverso);
-    font-weight: 800;
-    text-transform: uppercase;
-    padding: 8px;
-    text-align: center;
-    font-size: 12px;
-    letter-spacing: 0.5px;
 }

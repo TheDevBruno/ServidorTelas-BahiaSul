@@ -1,32 +1,59 @@
-# Xibo CMS — Personalização Visual (Branding Conexão BahiaSul)
+# Xibo CMS — Personalização Visual (Design System Conexão BahiaSul)
 
 ## Visão Geral
 
-Esta documentação descreve a padronização e personalização visual da interface do **Xibo CMS** para a **Conexão BahiaSul Mídia Indoor**.
+Esta documentação especifica a reformulação visual do **Xibo CMS** alinhada estritamente às diretrizes do **Design System oficial da Conexão BahiaSul**.
 
-A personalização abrange:
-- **Identidade Visual**: Paleta de cores oficial (Azul Oceano `#004B87`, Azul Secundário `#005F9E` e Teal/Ciano `#00A896`).
-- **Logo Oficial**: Aplicação do logo **Conexão BahiaSul Mídia Indoor** no painel administrativo e na tela de login.
-- **Tela de Login**: Layout moderno com gradiente fluido, efeito glassmorphic e tipografia refinada (fonte Inter).
-- **Interface Administrativa**: Cabeçalho customizado, menu lateral escuro, tabelas e botões estilizados.
+A reformulação unifica:
+- **Paleta de Cores Institucional**: Azul Escuro (`#0B3960`), Azul Médio (`#1B5693`) e Laranja Destaque (`#F26D21`).
+- **Tipografia**: Família de fontes `Montserrat` (ou `Open Sans`), utilizando títulos em maiúsculas (`UPPERCASE`) e destaques em negrito laranja.
+- **Logótipo Oficial**: Aplicação da marca oficial "Conexão BahiaSul - Internet feita para você!".
+- **Componentes e Cartões de Interface (UI Cards)**: Cantos arredondados de `8px`, fundo de cartão branco puro (`#FFFFFF`), borda superior e botões primários em laranja.
+- **Rodapé Institucional e Bordões**: Faixa em Azul Escuro e barra inferior em Laranja contendo os bordões da empresa:
+  - *"Internet feita para você!"*
+  - *"Faça sua parte, inspire outros e seja o exemplo!"*
 
 ---
 
-## Estrutura de Arquivos de Customização
+## Estrutura de Cores (Design System)
 
-Os arquivos da personalização visual ficam armazenados no repositório em `custom/xibo/` e são aplicados no Xibo CMS através do diretório compartilhado `/opt/bahiasul/xibo/shared/cms/custom/`:
+| Categoria | Cor / Nome | Código Hex | Aplicação no Xibo CMS |
+|---|---|---|---|
+| **Cor Principal** | Azul Escuro | `#0B3960` | Cabeçalho, menu lateral, títulos H1/H3, rodapé e blocos principais |
+| **Cor Secundária** | Azul Médio | `#1B5693` | Estados de hover, alternância em listas/tabelas e navegação |
+| **Cor Destaque** | Laranja | `#F26D21` | Subtítulos H2, botões primários, alertas, barra de rodapé e destaques |
+| **Texto Principal** | Cinza Escuro | `#333333` | Corpo de texto e descrições gerais |
+| **Texto Inverso** | Branco Puro | `#FFFFFF` | Textos sobre fundos escuros (Azul/Laranja) |
+| **Fundo Geral** | Cinza Claro | `#F8F9FA` | Fundo das páginas do sistema |
+| **Fundo de Cartões**| Branco | `#FFFFFF` | Cartões de interface, tabelas e painéis |
 
-| Arquivo | Destino no Xibo CMS | Descrição |
+---
+
+## Diretrizes Tipográficas
+
+- **Família de Fontes**: `Montserrat`, `Open Sans` ou `Roboto` (Sans-serif).
+- **Título Principal (H1)**: Azul Escuro (`#0B3960`), Extra Negrito (Black 900), Maiúsculas (`UPPERCASE`). Ex: `"SISTEMA DE DESIGN"`.
+- **Subtítulo (H2)**: Laranja (`#F26D21`), Negrito (Bold 700), Maiúsculas (`UPPERCASE`). Ex: `"DIRETRIZES VISUAIS"`.
+- **Títulos de Cartões e Listas**: Azul Escuro (`#0B3960`), Negrito (Bold 700), Maiúsculas (`UPPERCASE`).
+- **Corpo de Texto**: `#333333` Regular (400) com **ênfase em laranja negrito**.
+
+---
+
+## Estrutura de Arquivos de Implantação
+
+Os arquivos da personalização visual estão versionados no repositório em `custom/xibo/` e são aplicados no volume compartilhado do container Xibo CMS em `/opt/bahiasul/xibo/shared/cms/custom/`:
+
+| Arquivo | Destino no Xibo CMS | Função |
 |---|---|---|
-| `custom/xibo/override.css` | `/opt/bahiasul/xibo/shared/cms/custom/override.css` | CSS de personalização carregado automaticamente pelo Xibo v4 |
-| `custom/xibo/logo.png` | `/opt/bahiasul/xibo/shared/cms/custom/logo.png` | Logo da Conexão BahiaSul para o topo do painel |
-| `custom/xibo/logo-login.png` | `/opt/bahiasul/xibo/shared/cms/custom/logo-login.png` | Logo da Conexão BahiaSul para a tela de autenticação |
+| [`custom/xibo/override.css`](file:///opt/bahiasul/ServidorTelas-BahiaSul/custom/xibo/override.css) | `/opt/bahiasul/xibo/shared/cms/custom/override.css` | Folha de estilos baseada no Design System oficial |
+| `custom/xibo/logo.png` | `/opt/bahiasul/xibo/shared/cms/custom/logo.png` | Logótipo oficial em alta definição para o cabeçalho |
+| `custom/xibo/logo-login.png` | `/opt/bahiasul/xibo/shared/cms/custom/logo-login.png` | Logótipo oficial para o cartão da tela de login |
 
 ---
 
 ## Procedimento de Implantação no Servidor
 
-Para aplicar a personalização visual no ambiente de execução do Xibo CMS, execute os seguintes comandos no servidor `servidortelas`:
+Para aplicar a personalização visual reformulada no ambiente Docker do Xibo, execute os seguintes comandos no servidor `servidortelas`:
 
 ```bash
 # 1. Copiar os arquivos customizados para o diretório compartilhado do Xibo
@@ -41,34 +68,11 @@ sudo chmod 644 /opt/bahiasul/xibo/shared/cms/custom/*
 
 ## Configurações no Painel Administrativo do Xibo CMS
 
-Após copiar os arquivos, conclua a parametrização visual no painel do Xibo:
+Acesse `http://10.98.254.189/` e navegue até **Administração** (`Administration`) ➔ **Configurações** (`Settings`) ➔ **Regional / Aparência**:
 
-1. Acesse o painel web: `http://10.98.254.189/`
-2. Navegue até **Administração** (`Administration`) -> **Configurações** (`Settings`).
-3. Na aba **Regional / ApARÊNCIA** (`Regional / Regional Settings`):
-   - **Nome da Instância (`Instance Name`)**: `Conexão BahiaSul - Mídia Indoor`
-   - **Título da Aplicação (`Application Title`)**: `Servidor de Telas BahiaSul`
-   - **URL do Logo (`Logo URL`)**: `/custom/logo.png`
-   - **URL do Logo de Login (`Login Logo URL`)**: `/custom/logo-login.png`
-4. Salve as alterações.
+- **Nome da Instância (`Instance Name`)**: `Conexão BahiaSul`
+- **Título da Aplicação (`Application Title`)**: `Servidor de Telas BahiaSul`
+- **URL do Logo (`Logo URL`)**: `/custom/logo.png`
+- **URL do Logo de Login (`Login Logo URL`)**: `/custom/logo-login.png`
 
----
-
-## Especificações da Identidade Visual (Cores e Tipografia)
-
-| Elemento | Valor / Código Hex | Aplicação |
-|---|---|---|
-| Cor Primária | `#004B87` | Cabeçalho, botões primários e destaques |
-| Cor Secundária | `#005F9E` | Gradientes e estados hover de menu |
-| Cor de Acento | `#00A896` | Badges, indicadores e destaques |
-| Fundo Dark (Sidebar/Login) | `#0F172A` | Barra lateral e gradiente da tela de login |
-| Tipografia | `'Inter', sans-serif` | Fonte padrão em todas as interfaces do CMS |
-
----
-
-## Validação
-
-Para validar que o estilo visual está ativo:
-
-1. Acesse a tela de login em `http://10.98.254.189/login` e confirme se o cartão de login exibe o gradiente da BahiaSul e a nova logo.
-2. Efetue login e verifique a barra superior em Azul Oceano com o logo no canto superior esquerdo.
+Salvar e recarregar o navegador (`Ctrl + F5`).

@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Xibo CMS — Design System Conexão BahiaSul (Ajuste Fino de Botões & Tabelas)
+   Xibo CMS — Design System Conexão BahiaSul (Alta Visibilidade & Editor de Layout)
    ========================================================================== */
 
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap');
@@ -95,7 +95,7 @@ aside, .sidebar, .main-sidebar, #sidebar-wrapper, div[class*="sidebar"] {
     border-bottom: 1px solid #E2E8F0 !important;
 }
 
-/* Estilização Correta dos Botões de Ação da Tabela */
+/* Estilização dos Botões de Ação da Tabela */
 .dt-button, .btn-default, .btn-secondary, .btn-outline-secondary, .btn-light, .btn-group .btn {
     background-color: var(--bahiasul-azul-escuro) !important;
     color: #FFFFFF !important;
@@ -133,8 +133,50 @@ aside, .sidebar, .main-sidebar, #sidebar-wrapper, div[class*="sidebar"] {
     color: #FFFFFF !important;
 }
 
-/* 6. CARTÕES E CAMPOS DE FORMULÁRIO */
-.card, .panel, .box, div[class*="card"] {
+/* 6. ISOLAMENTO & AJUSTES DO EDITOR DE LAYOUT (LAYOUT DESIGNER & WIDGET DRAWER) */
+.designer-drawer, .layout-designer, #layout-designer, .widget-drawer, .drawer-content, [class*="designer"], [class*="drawer"] {
+    text-transform: none !important;
+}
+
+/* Ajuste dos quadros de widgets no gaveteiro para não cortar o texto */
+[class*="widget-card"], [class*="widget-box"], .widget-item, .designer-widget, .drawer-content .card, [class*="widget-item"] {
+    padding: 6px 4px !important;
+    text-align: center !important;
+    min-height: 65px !important;
+    overflow: hidden !important;
+    border: 1px solid #E2E8F0 !important;
+    border-radius: 8px !important;
+}
+
+/* Texto dos widgets (Clock, HLS, HTML, Webpage, etc) */
+[class*="widget-"] *, .designer-widget *, .drawer-content span, .drawer-content div, .drawer-content p {
+    font-size: 11px !important;
+    font-weight: 600 !important;
+    line-height: 1.2 !important;
+    text-transform: none !important;
+    letter-spacing: 0 !important;
+    word-break: break-word !important;
+    white-space: normal !important;
+    color: var(--bahiasul-azul-escuro) !important;
+}
+
+/* Ícones dos widgets */
+[class*="widget-"] i, .designer-widget i, [class*="widget-"] svg, .drawer-content svg {
+    color: var(--bahiasul-laranja) !important;
+    font-size: 18px !important;
+}
+
+/* Título de Pesquisa e Cabeçalho do Gaveteiro */
+.drawer-content h5, .drawer-content h6, .drawer-content .title, [class*="drawer"] h5 {
+    color: var(--bahiasul-azul-escuro) !important;
+    font-family: 'Montserrat', sans-serif !important;
+    font-weight: 700 !important;
+    text-transform: uppercase !important;
+    font-size: 13px !important;
+}
+
+/* 7. CARTÕES E CAMPOS DE FORMULÁRIO GERAIS */
+.card, .panel, .box {
     background-color: #FFFFFF !important;
     border-radius: 8px !important;
     border: 1px solid #E2E8F0 !important;
@@ -148,7 +190,7 @@ input.form-control, select.form-control, textarea.form-control {
     border-radius: 6px !important;
 }
 
-/* 7. CABEÇALHOS DAS TABELAS */
+/* 8. CABEÇALHOS DAS TABELAS */
 .table thead th, table th {
     background-color: var(--bahiasul-azul-escuro) !important;
     color: #FFFFFF !important;

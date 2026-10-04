@@ -1,0 +1,48 @@
+<!-- ==========================================================================
+   WIDGET HTML INCORPORADO (YOUTUBE VIDEO PLAYER) — CONEXÃO BAHIASUL
+   ========================================================================== -->
+
+<!-- 1. HTML (Cole no campo HTML do Widget Incorporado / Embedded no Xibo) -->
+<div class="bahiasul-youtube-container">
+    <!-- Insira o ID do seu vídeo do YouTube no iframe abaixo (substitua VIDEO_ID): -->
+    <iframe 
+        id="ytPlayer"
+        src="https://www.youtube-nocookie.com/embed/VIDEO_ID?autoplay=1&mute=0&controls=1&loop=1&playlist=VIDEO_ID&enablejsapi=1" 
+        title="Vídeo YouTube BahiaSul" 
+        frameborder="0" 
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+        allowfullscreen>
+    </iframe>
+</div>
+
+<!-- 2. CSS (Cole no campo CSS do Widget Incorporado / Embedded no Xibo) -->
+<style>
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background: #000000;
+}
+
+.bahiasul-youtube-container {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+.bahiasul-youtube-container iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    display: block;
+}
+</style>
+
+<!-- 3. JAVASCRIPT (Opcional - Cole no campo JavaScript para controle adicional) -->
+<script>
+// Exemplo de manipulação adicional se necessário:
+console.log('Player YouTube BahiaSul Carregado');
+</script>

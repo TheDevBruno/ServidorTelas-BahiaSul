@@ -47,24 +47,21 @@ Este documento orienta a criação, estruturação e estilização de **Layouts,
 
 ### 2.3 Mapeamento das Abas do Widget RSS Ticker no Xibo CMS v4 (Interface em Português)
 
-### 2.3 Como Configurar o Widget RSS Ticker no Xibo CMS v4 (Com base na interface real)
+### 2.3 Como Configurar os Elementos do RSS Ticker no Xibo CMS v4
 
-Com base na estrutura de telas do Xibo v4:
+Na interface nativa do Xibo v4, você pode selecionar visualmente os blocos de dados que deseja exibir:
 
-1. **Aba `Dados substitutos`**:
-   - Para selecionar quais informações do feed RSS serão exibidas (Título, Resumo, Conteúdo, etc.):
-   - Preencha a tag correspondente no campo **Título** (exemplo: `[Title]`).
-   - Se desejar criar um layout de dados customizado, clique no botão laranja **`ADICIONAR NOVO`**.
+1. **Na aba de Elementos (Blocos de Dados)**:
+   - Marque a caixa **`Título`** (obrigatório para exibir a chamada da notícia).
+   - *(Opcional)* Marque **`Data de publicação`** ou **`Resumo`** caso queira complementar a informação no ticker.
+   - O Xibo irá montar automaticamente a chamada da notícia com base nas caixas marcadas.
 
 2. **Aba `Aparência`**:
-   - **Efeitos**: Altere de *"Fade"* para **"Marquee Left"** (ou *Rolagem para a esquerda*) para que as notícias percorram o rodapé continuamente.
-   - **Velocidade**: Ajuste para `1500` a `2000` (quanto maior, mais suave a rolagem).
-   - **Edição HTML**: O campo *"Mensagem caso não houver dados"* possui o ícone **`</>`** (Código Fonte) no topo superior esquerdo para inserir/visualizar código HTML diretamente.
+   - **Efeitos**: Defina como **"Marquee Left"** (Rolagem para a esquerda) para criar o efeito de rodapé contínuo.
+   - **Velocidade**: Ajuste para `1500` - `2000`.
 
-3. **Alternativa Recomendada: Widget "HTML Incorporado" (Embedded HTML)**:
-   - Se você precisa de total liberdade para aplicar um layout com a barra Laranja/Azul da BahiaSul e estilo CSS avançado:
-   - No menu de Módulos à esquerda, utilize o Widget **HTML Incorporado** (*Embedded*).
-   - Nele há campos dedicados para **HTML**, **CSS** e **JavaScript**, permitindo colar o código do Design System sem nenhuma limitação de templates do Xibo.
+3. **Estilização Visual**:
+   - Com as regras globais que implantamos no `override.css`, os elementos selecionados serão formatados automaticamente no padrão da **Conexão BahiaSul** (Fonte Montserrat, cor branca e fundo Azul/Laranja).
 
 ---
 

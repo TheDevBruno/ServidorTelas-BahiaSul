@@ -1,20 +1,20 @@
 <!-- ==========================================================================
-   WIDGET HTML INCORPORADO (INSTAGRAM POSTS REAIS) — @conexaobahiasul
+   WIDGET HTML INCORPORADO (INSTAGRAM POSTS REAIS BAHIASUL) — @conexaobahiasul
    ========================================================================== -->
 
 <!-- 1. HTML (Cole no campo HTML do Widget Incorporado / Embedded no Xibo) -->
-<div class="bahiasul-insta-card">
+<div class="bahiasul-insta-card" id="instaCard">
     <div class="insta-header">
         <div class="profile-info">
             <div class="insta-avatar">
-                <img src="/library/brand/logo.svg" alt="BahiaSul Logo" onerror="this.src='https://api.qrserver.com/v1/create-qr-code/?size=100x100&data=https://www.instagram.com/conexaobahiasul/';" />
+                <img id="avatarImg" src="http://10.98.254.189/library/brand/logo.svg" alt="BahiaSul Logo" onerror="this.onerror=null; this.src='https://api.qrserver.com/v1/create-qr-code/?size=100x100&data=https://www.instagram.com/conexaobahiasul/';" />
             </div>
             <div class="profile-text">
                 <div class="profile-handle">
                     @conexaobahiasul
                     <span class="verified-badge">✓</span>
                 </div>
-                <div class="profile-sub">Conexão BahiaSul • Feed Oficial ao Vivo</div>
+                <div class="profile-sub">Conexão BahiaSul • Feed Oficial</div>
             </div>
         </div>
         <div class="insta-logo-badge">
@@ -24,20 +24,20 @@
         </div>
     </div>
 
-    <!-- Área de Exibição Iframe do Post Oficial do Instagram -->
+    <!-- Área de Exibição das Fotos dos Posts Reais -->
     <div class="insta-body">
-        <div class="iframe-container">
-            <iframe id="instaIframe" src="" frameborder="0" scrolling="no" allowtransparency="true"></iframe>
+        <div class="post-media-box">
+            <img id="realPostImage" src="" alt="Post Real Instagram BahiaSul" />
         </div>
 
         <div class="qr-side-box">
-            <div class="post-tag">INSTAGRAM BAHIASUL</div>
-            <h3 class="side-title">Acompanhe nossas publicações diárias!</h3>
+            <div class="post-tag">INSTAGRAM @CONEXAOBAHIASUL</div>
+            <h3 class="side-title" id="postCaption">Confira nossas postagens no Instagram!</h3>
 
             <div class="qr-container">
                 <img src="https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=https://www.instagram.com/conexaobahiasul/" alt="QR Code Instagram" />
                 <span class="qr-title">SIGA @CONEXAOBAHIASUL</span>
-                <span class="qr-sub">Aponta a câmera do celular</span>
+                <span class="qr-sub">Aponte a câmera do celular</span>
             </div>
         </div>
     </div>
@@ -74,6 +74,7 @@ html, body {
     padding: 20px;
     color: #FFFFFF;
     border-top: 5px solid #F26D21;
+    transition: opacity 0.4s ease-in-out;
 }
 
 .insta-header {
@@ -91,8 +92,8 @@ html, body {
 }
 
 .insta-avatar {
-    width: 46px;
-    height: 46px;
+    width: 48px;
+    height: 48px;
     border-radius: 50%;
     padding: 2px;
     background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
@@ -162,20 +163,25 @@ html, body {
     overflow: hidden;
 }
 
-.iframe-container {
-    width: 60%;
+.post-media-box {
+    width: 55%;
     height: 100%;
-    min-height: 260px;
-    border-radius: 10px;
+    min-height: 240px;
+    border-radius: 12px;
     overflow: hidden;
-    background: #FFFFFF;
+    background: #072540;
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.iframe-container iframe {
+.post-media-box img {
     width: 100%;
     height: 100%;
-    border: none;
+    object-fit: cover;
+    display: block;
 }
 
 .qr-side-box {
@@ -198,9 +204,9 @@ html, body {
 }
 
 .side-title {
-    font-size: 20px;
+    font-size: 19px;
     font-weight: 800;
-    line-height: 1.35;
+    line-height: 1.4;
     color: #FFFFFF;
     margin: 10px 0;
 }
@@ -259,22 +265,44 @@ html, body {
 
 <!-- 3. JAVASCRIPT (Cole no campo JavaScript do Widget Incorporado / Embedded no Xibo) -->
 <script>
-// LISTA DE LINKS / IDs DAS POSTAGENS REAIS PUBLICADAS NO INSTAGRAM DA BAHIASUL
-// (Basta abrir qualquer post no Instagram, copiar o link da barra de endereço e colar aqui!):
+// LISTA DAS POSTAGENS REAIS PUBLICADAS NO PERFIL DA BAHIASUL:
 const realInstagramPosts = [
-    'https://www.instagram.com/conexaobahiasul/embed', // Embed do Perfil Oficial
+    { url: 'https://www.instagram.com/p/Ddq7HAdEY7v/', title: 'Confira nossas novidades e conteúdos no perfil oficial!' },
+    { url: 'https://www.instagram.com/p/DdzF3FkkXvI/', title: 'Conexão de Alta Performance para sua casa e empresa.' },
+    { url: 'https://www.instagram.com/reel/DcBaGhzxQFd/', title: 'Acompanhe as dicas e ofertas da Conexão BahiaSul.' },
+    { url: 'https://www.instagram.com/reel/DdkE9o8M_mq/', title: 'Siga @conexaobahiasul no Instagram!' }
 ];
 
-let postIframeIndex = 0;
+let postIndex = 0;
 
-function loadNextInstagramPost() {
-    const iframe = document.getElementById('instaIframe');
-    if (!iframe) return;
-
-    iframe.src = realInstagramPosts[postIframeIndex];
-    postIframeIndex = (postIframeIndex + 1) % realInstagramPosts.length;
+function getInstagramMediaUrl(postUrl) {
+    const match = postUrl.match(/\/(p|reel)\/([A-Za-z0-9_-]+)/);
+    if (match && match[2]) {
+        return 'https://www.instagram.com/p/' + match[2] + '/media/?size=l';
+    }
+    return postUrl;
 }
 
-loadNextInstagramPost();
-setInterval(loadNextInstagramPost, 12000); // Alterna postagem real a cada 12 segundos
+function renderRealInstagramPost() {
+    const card = document.getElementById('instaCard');
+    const imgEl = document.getElementById('realPostImage');
+    const captionEl = document.getElementById('postCaption');
+    if (!card || !imgEl) return;
+
+    card.style.opacity = '0.1';
+
+    setTimeout(() => {
+        const item = realInstagramPosts[postIndex];
+        const mediaUrl = getInstagramMediaUrl(item.url);
+
+        imgEl.src = mediaUrl;
+        if (captionEl) captionEl.textContent = item.title;
+
+        card.style.opacity = '1';
+        postIndex = (postIndex + 1) % realInstagramPosts.length;
+    }, 350);
+}
+
+renderRealInstagramPost();
+setInterval(renderRealInstagramPost, 10000); // Rotaciona os posts reais a cada 10 segundos
 </script>

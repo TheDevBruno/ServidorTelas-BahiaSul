@@ -47,30 +47,24 @@ Este documento orienta a criação, estruturação e estilização de **Layouts,
 
 ### 2.3 Mapeamento das Abas do Widget RSS Ticker no Xibo CMS v4 (Interface em Português)
 
-Na versão 4 do Xibo em Português, o painel do **RSS Ticker** possui 4 abas superiores:
+### 2.3 Como Configurar o Widget RSS Ticker no Xibo CMS v4 (Com base na interface real)
 
-1. **Aba `Configurar`**:
-   - Insira a **URL do Feed RSS** (ex: `https://g1.globo.com/rss/g1/`).
-   - Defina a quantidade de notícias a carregar.
+Com base na estrutura de telas do Xibo v4:
+
+1. **Aba `Dados substitutos`**:
+   - Para selecionar quais informações do feed RSS serão exibidas (Título, Resumo, Conteúdo, etc.):
+   - Preencha a tag correspondente no campo **Título** (exemplo: `[Title]`).
+   - Se desejar criar um layout de dados customizado, clique no botão laranja **`ADICIONAR NOVO`**.
 
 2. **Aba `Aparência`**:
-   - **Efeitos**: Altere de *"Sem Transição"* para **"Marquee Left"** (ou Rolagem Horizontal) para transformar o texto amontoado em uma linha contínua em movimento.
-   - **Velocidade**: Altere a velocidade de rolagem (padrão: `1000` a `2000`).
+   - **Efeitos**: Altere de *"Fade"* para **"Marquee Left"** (ou *Rolagem para a esquerda*) para que as notícias percorram o rodapé continuamente.
+   - **Velocidade**: Ajuste para `1500` a `2000` (quanto maior, mais suave a rolagem).
+   - **Edição HTML**: O campo *"Mensagem caso não houver dados"* possui o ícone **`</>`** (Código Fonte) no topo superior esquerdo para inserir/visualizar código HTML diretamente.
 
-3. **Aba `Dados substitutos`**:
-   - É nesta aba que fica o **Modelo HTML do Texto / Notícia**.
-   - Você verá os campos disponíveis (como `[Title]`, `[Description]`, `[Date]`).
-   - Cole a estrutura formatada HTML para exibir o título da notícia:
-     ```html
-     <div class="bahiasul-ticker-item">
-         <span class="ticker-badge">NOTÍCIAS</span>
-         <span class="ticker-title">[Title]</span>
-         <span class="ticker-separator">•</span>
-     </div>
-     ```
-
-4. **Aba `Avançado`**:
-   - Onde é possível inserir regras de **CSS adicionais** específicas para este Widget, ou você pode contar com os estilos que já injetamos no `override.css` global do sistema.
+3. **Alternativa Recomendada: Widget "HTML Incorporado" (Embedded HTML)**:
+   - Se você precisa de total liberdade para aplicar um layout com a barra Laranja/Azul da BahiaSul e estilo CSS avançado:
+   - No menu de Módulos à esquerda, utilize o Widget **HTML Incorporado** (*Embedded*).
+   - Nele há campos dedicados para **HTML**, **CSS** e **JavaScript**, permitindo colar o código do Design System sem nenhuma limitação de templates do Xibo.
 
 ---
 

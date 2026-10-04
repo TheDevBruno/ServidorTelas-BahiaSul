@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Xibo CMS — Design System Conexão BahiaSul (Alta Visibilidade & Dropdowns)
+   Xibo CMS — Design System Conexão BahiaSul (Alta Visibilidade & Branding)
    ========================================================================== */
 
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap');
@@ -13,7 +13,7 @@
     --bahiasul-laranja-hover: #D95A13;
     --bahiasul-texto-escuro: #333333;
     --bahiasul-texto-claro: #FFFFFF;
-    --bahiasul-fundo: #c3def8;
+    --bahiasul-fundo: #F8F9FA;
 }
 
 /* Tipografia Base */
@@ -24,29 +24,45 @@ body {
 }
 
 /* ==========================================================================
-   1. HEADER SIDE & BARRA SUPERIOR (.row.header.header-side)
+   1. TODAS AS FONTES COM COR BRANCO PURO EM 'row header header-side'
    ========================================================================== */
 
 .row.header.header-side,
+.row.header.header-side *,
 .header-side,
+.header-side *,
 div[class*="header-side"],
-header,
-nav.navbar,
-header.navbar {
-    background-color: #072540 !important;
-    /* Azul Escuro Profundo */
-    border-bottom: 3px solid var(--bahiasul-laranja) !important;
-    box-shadow: 0 4px 12px rgba(11, 57, 96, 0.25) !important;
-    min-height: 60px !important;
+div[class*="header-side"] * {
+    color: #FFFFFF !important;
+    fill: #FFFFFF !important;
+    opacity: 1 !important;
 }
 
 .row.header.header-side a,
 .header-side a,
-header a,
-nav.navbar a {
+.row.header.header-side span,
+.header-side span,
+.row.header.header-side div,
+.header-side div,
+.row.header.header-side p,
+.header-side p,
+.row.header.header-side small,
+.header-side small,
+.row.header.header-side i,
+.header-side i,
+.row.header.header-side svg,
+.header-side svg {
     color: #FFFFFF !important;
-    font-weight: 700 !important;
-    font-family: 'Montserrat', sans-serif !important;
+    fill: #FFFFFF !important;
+    opacity: 1 !important;
+}
+
+/* Fundo da Barra Superior Header-Side */
+.row.header.header-side, .header-side, div[class*="header-side"] {
+    background-color: #072540 !important; /* Azul Escuro Profundo */
+    border-bottom: 3px solid var(--bahiasul-laranja) !important;
+    box-shadow: 0 4px 12px rgba(11, 57, 96, 0.25) !important;
+    min-height: 60px !important;
 }
 
 /* Título Dashboard / Página (32px Branco Puro) */
@@ -62,12 +78,7 @@ header div.flex.align-middle {
 }
 
 /* Tamanho da Logo */
-img[src*="/brand/logo"],
-img[alt="Xibo"],
-img[alt="BahiaSul"],
-img[alt="Logo"],
-.object-contain.object-left,
-img.w-\[77\.287px\] {
+img[src*="/brand/logo"], img[alt="Xibo"], img[alt="BahiaSul"], img[alt="Logo"], .object-contain.object-left, img.w-\[77\.287px\] {
     width: 210px !important;
     min-width: 180px !important;
     max-width: 260px !important;
@@ -78,41 +89,25 @@ img.w-\[77\.287px\] {
 }
 
 /* ==========================================================================
-   2. DROPDOWNS, SELECTS, AUTOCOMPLETE E MENUS SUSPENSOS (CORREÇÃO DE TEXTO)
+   2. DROPDOWNS, SELECTS, AUTOCOMPLETE E MENUS SUSPENSOS
    ========================================================================== */
 
-select,
-option,
-.dropdown-menu,
-.dropdown-item,
-.select2-container,
-.v-select,
-[class*="dropdown"],
-[class*="select"] {
-    background-color: var(--bahiasul-fundo) !important;
+select, option, .dropdown-menu, .dropdown-item, .select2-container, .v-select, [class*="dropdown"], [class*="select"] {
+    background-color: #FFFFFF !important;
     color: #1E293B !important;
 }
 
-.dropdown-menu *,
-.dropdown-item *,
-option,
-.select2-result,
-[class*="dropdown"] *,
-[class*="select"] * {
+.dropdown-menu *, .dropdown-item *, option, .select2-result, [class*="dropdown"] *, [class*="select"] * {
     color: #1E293B !important;
 }
 
 /* Item Selecionado e Hover nos Dropdowns */
-.dropdown-item:hover,
-.dropdown-item.active,
-option:selected,
-.select2-highlighted {
+.dropdown-item:hover, .dropdown-item.active, option:selected, .select2-highlighted {
     background-color: var(--bahiasul-azul-medio) !important;
     color: #FFFFFF !important;
 }
 
-.dropdown-item:hover *,
-option:selected * {
+.dropdown-item:hover *, option:selected * {
     color: #FFFFFF !important;
 }
 
@@ -120,37 +115,29 @@ option:selected * {
    3. TOOLBAR PANE CONTAINER & OBJETOS ARRASTÁVEIS (.toolbar-card.ui-draggable)
    ========================================================================== */
 
-.toolbar-pane-container,
-[class*="toolbar-pane-container"],
-.toolbar-pane,
-.toolbar-widgets-pane {
+.toolbar-pane-container, [class*="toolbar-pane-container"], .toolbar-pane, .toolbar-widgets-pane {
     background-color: #072540 !important;
     color: #FFFFFF !important;
     padding: 10px !important;
 }
 
-.toolbar-pane-container label,
-.toolbar-pane label {
+.toolbar-pane-container label, .toolbar-pane label {
     color: #FFFFFF !important;
     font-family: 'Montserrat', sans-serif !important;
     font-weight: 700 !important;
     font-size: 12px !important;
 }
 
-.toolbar-pane-container input,
-.toolbar-pane-container select {
+.toolbar-pane-container input, .toolbar-pane-container select {
     background-color: #FFFFFF !important;
     color: #333333 !important;
     border: 1px solid #CBD5E1 !important;
     border-radius: 6px !important;
 }
 
-/* Cartões Arrastáveis de Objetos (toolbar-card ui-draggable ui-draggable-handle) */
-.toolbar-card,
-.toolbar-card.ui-draggable,
-.ui-draggable-handle,
-[class*="toolbar-card"] {
-    background-color: var(--bahiasul-fundo) !important;
+/* Cartões Arrastáveis de Objetos */
+.toolbar-card, .toolbar-card.ui-draggable, .ui-draggable-handle, [class*="toolbar-card"] {
+    background-color: #FFFFFF !important;
     border: 2px solid #CBD5E1 !important;
     border-radius: 8px !important;
     padding: 10px 6px !important;
@@ -161,18 +148,14 @@ option:selected * {
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12) !important;
 }
 
-.toolbar-card:hover,
-.toolbar-card.ui-draggable:hover {
+.toolbar-card:hover, .toolbar-card.ui-draggable:hover {
     border-color: var(--bahiasul-laranja) !important;
     box-shadow: 0 6px 14px rgba(242, 109, 33, 0.3) !important;
     transform: translateY(-2px) !important;
 }
 
 /* Textos dentro dos Objetos Arrastáveis */
-.toolbar-card *,
-.toolbar-card.ui-draggable *,
-.ui-draggable-handle *,
-[class*="toolbar-card"] * {
+.toolbar-card *, .toolbar-card.ui-draggable *, .ui-draggable-handle *, [class*="toolbar-card"] * {
     color: var(--bahiasul-azul-escuro) !important;
     font-family: 'Montserrat', sans-serif !important;
     font-size: 11px !important;
@@ -185,10 +168,7 @@ option:selected * {
 }
 
 /* Ícone dos Objetos Arrastáveis */
-.toolbar-card i,
-.toolbar-card svg,
-.toolbar-card.ui-draggable i,
-.toolbar-card.ui-draggable svg {
+.toolbar-card i, .toolbar-card svg, .toolbar-card.ui-draggable i, .toolbar-card.ui-draggable svg {
     color: var(--bahiasul-laranja) !important;
     fill: var(--bahiasul-laranja) !important;
     font-size: 24px !important;
@@ -199,18 +179,11 @@ option:selected * {
    4. BARRA LATERAL PRINCIPAL & NAVEGAÇÃO GERAL
    ========================================================================== */
 
-aside,
-.sidebar,
-.main-sidebar,
-#sidebar-wrapper,
-div[class*="sidebar"] {
+aside, .sidebar, .main-sidebar, #sidebar-wrapper, div[class*="sidebar"] {
     background-color: #072540 !important;
 }
 
-.sidebar a,
-.main-sidebar a,
-aside a,
-.sidebar .nav-link {
+.sidebar a, .main-sidebar a, aside a, .sidebar .nav-link {
     color: #E2E8F0 !important;
     font-family: 'Montserrat', sans-serif !important;
     font-weight: 600 !important;
@@ -221,17 +194,12 @@ aside a,
     transition: all 0.2s ease-in-out !important;
 }
 
-.sidebar a:hover,
-.main-sidebar a:hover,
-aside a:hover {
+.sidebar a:hover, .main-sidebar a:hover, aside a:hover {
     background-color: var(--bahiasul-azul-medio) !important;
     color: #FFFFFF !important;
 }
 
-.sidebar .active>a,
-.sidebar a.active,
-aside a.active,
-.sidebar li.active>a {
+.sidebar .active > a, .sidebar a.active, aside a.active, .sidebar li.active > a {
     background-color: var(--bahiasul-laranja) !important;
     color: #FFFFFF !important;
     font-weight: 800 !important;
@@ -239,15 +207,12 @@ aside a.active,
 }
 
 /* 5. NAVEGAÇÃO POR ABAS */
-.nav-tabs,
-.nav-pills,
-div[class*="tabs"] {
+.nav-tabs, .nav-pills, div[class*="tabs"] {
     border-bottom: 2px solid #E2E8F0 !important;
     background-color: #FFFFFF !important;
 }
 
-.nav-tabs .nav-link,
-.nav-tabs>li>a {
+.nav-tabs .nav-link, .nav-tabs > li > a {
     color: var(--bahiasul-azul-escuro) !important;
     font-family: 'Montserrat', sans-serif !important;
     font-weight: 700 !important;
@@ -256,8 +221,7 @@ div[class*="tabs"] {
     padding: 12px 20px !important;
 }
 
-.nav-tabs .nav-link.active,
-.nav-tabs>li.active>a {
+.nav-tabs .nav-link.active, .nav-tabs > li.active > a {
     color: var(--bahiasul-laranja) !important;
     border-bottom: 3px solid var(--bahiasul-laranja) !important;
     background-color: transparent !important;
@@ -265,11 +229,7 @@ div[class*="tabs"] {
 }
 
 /* 6. BOTÕES DE AÇÃO */
-.btn-primary,
-button[type="submit"],
-.btn-orange,
-.btn-success,
-[class*="btn-add"] {
+.btn-primary, button[type="submit"], .btn-orange, .btn-success, [class*="btn-add"] {
     background-color: var(--bahiasul-laranja) !important;
     color: #FFFFFF !important;
     font-family: 'Montserrat', sans-serif !important;
@@ -282,26 +242,21 @@ button[type="submit"],
     transition: all 0.2s ease-in-out !important;
 }
 
-.btn-primary:hover,
-button[type="submit"]:hover {
+.btn-primary:hover, button[type="submit"]:hover {
     background-color: var(--bahiasul-laranja-hover) !important;
     box-shadow: 0 6px 14px rgba(242, 109, 33, 0.4) !important;
     color: #FFFFFF !important;
 }
 
 /* CARTÕES E FORMULÁRIOS GERAIS */
-.card,
-.panel,
-.box {
+.card, .panel, .box {
     background-color: #FFFFFF !important;
     border-radius: 8px !important;
     border: 1px solid #E2E8F0 !important;
     box-shadow: 0 4px 12px rgba(11, 57, 96, 0.06) !important;
 }
 
-input.form-control,
-select.form-control,
-textarea.form-control {
+input.form-control, select.form-control, textarea.form-control {
     background-color: #FFFFFF !important;
     color: var(--bahiasul-texto-escuro) !important;
     border: 1px solid #CBD5E1 !important;
@@ -309,8 +264,7 @@ textarea.form-control {
 }
 
 /* TABELAS */
-.table thead th,
-table th {
+.table thead th, table th {
     background-color: var(--bahiasul-azul-escuro) !important;
     color: #FFFFFF !important;
     font-family: 'Montserrat', sans-serif !important;
@@ -320,9 +274,49 @@ table th {
 }
 
 /* RODAPÉ */
-footer,
-.main-footer {
+footer, .main-footer {
     background-color: var(--bahiasul-azul-escuro) !important;
     color: #FFFFFF !important;
     border-top: 3px solid var(--bahiasul-laranja) !important;
+}
+
+/* ==========================================================================
+   7. ESTILIZAÇÃO GLOBAL DO WIDGET RSS TICKER (DESIGN SYSTEM BAHIASUL)
+   ========================================================================== */
+
+.ticker-item,
+.ticker-text,
+.ticker-content,
+.ticker,
+div[class*="ticker"] {
+    font-family: 'Montserrat', sans-serif !important;
+    color: #FFFFFF !important;
+    font-weight: 600 !important;
+}
+
+.ticker-container,
+.ticker-wrapper,
+.ticker-window,
+.marquee,
+div[id*="ticker"] {
+    background-color: #0B3960 !important;
+    border-top: 4px solid #F26D21 !important;
+}
+
+.bahiasul-ticker-item {
+    display: inline-flex !important;
+    align-items: center !important;
+    padding: 10px 20px !important;
+    background-color: #0B3960 !important;
+}
+
+.ticker-badge {
+    background-color: #F26D21 !important;
+    color: #FFFFFF !important;
+    font-weight: 800 !important;
+    font-size: 14px !important;
+    text-transform: uppercase !important;
+    padding: 4px 10px !important;
+    border-radius: 4px !important;
+    margin-right: 12px !important;
 }

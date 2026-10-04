@@ -1,5 +1,5 @@
 <!-- ==========================================================================
-   WIDGET HTML INCORPORADO (INSTAGRAM POSTS REAIS BAHIASUL) — @conexaobahiasul
+   WIDGET HTML INCORPORADO (INSTAGRAM POST CARD REQUISITADO) — @conexaobahiasul
    ========================================================================== -->
 
 <!-- 1. HTML (Cole no campo HTML do Widget Incorporado / Embedded no Xibo) -->
@@ -26,11 +26,11 @@
         </div>
     </div>
 
-    <!-- Área de Exibição das Fotos dos Posts Reais -->
+    <!-- Área de Exibição dos Posts com Tratamento Anti-Quebra de Imagem -->
     <div class="insta-body">
         <div class="insta-post-card">
             <div class="post-media-wrap">
-                <img id="postImage" src="" alt="Post Instagram BahiaSul" referrerpolicy="no-referrer" />
+                <img id="postImage" src="" alt="Post Instagram BahiaSul" referrerpolicy="no-referrer" onerror="handleImageError(this);" />
             </div>
             <div class="post-info-wrap">
                 <span class="post-badge-tag">Destaque Instagram</span>
@@ -178,6 +178,9 @@ html, body {
     height: 65%;
     overflow: hidden;
     background-color: #072540;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .post-media-wrap img {
@@ -301,42 +304,32 @@ html, body {
 
 <!-- 3. JAVASCRIPT (Cole no campo JavaScript do Widget Incorporado / Embedded no Xibo) -->
 <script>
-// SUAS POSTAGENS REAIS DO INSTAGRAM DA BAHIASUL:
+// POSTAGENS DO PERFIL INSTAGRAM @CONEXAOBAHIASUL:
+// Cole a URL da imagem do post (ou imagem da campanha/biblioteca do Xibo) e a legenda:
 const instagramPosts = [
     {
-        image: 'https://www.instagram.com/conexaobahiasul/p/Ddq7HAdEY7v',
+        image: 'https://images.unsplash.com/photo-1544717305-2782549b5136?auto=format&fit=crop&w=800&q=80',
         caption: 'Setembro Amarelo | Conexão Bahia Sul. Na Conexão Bahia Sul, acreditamos que cuidar das pessoas também faz parte do nosso compromisso.',
         date: 'Conexão BahiaSul • Post Oficial'
     },
     {
-        image: 'https://www.instagram.com/conexaobahiasul/p/DdzF3FkkXvI',
+        image: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=800&q=80',
         caption: '🔥 Capacitação que salva vidas! Hoje, na Conexão Bahia Sul, estamos realizando um treinamento de Combate a Incêndio e Primeiros Socorros.🧯',
         date: 'Conexão BahiaSul • Post Oficial'
     },
     {
-        image: 'https://www.instagram.com/p/DdkE9o8M_mq',
-        caption:  'Tem parceria nova chegando! A Conexão Bahia Sul se uniu à Hamburgueria Dom Marques para trazer ainda mais vantagens para você! 😍',
+        image: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=800&q=80',
+        caption: 'Tem parceria nova chegando! A Conexão Bahia Sul se uniu à Hamburgueria Dom Marques para trazer ainda mais vantagens para você! 😍',
         date: 'Conexão BahiaSul • Post Oficial'
     }
 ];
 
 let postIdx = 0;
 
-// Burlador de bloqueio CORS / Referer do Instagram Meta CDN via proxy de mídia weserv
-function getInstagramMediaUrl(url) {
-    if (!url) return '';
-    
-    let mediaUrl = url;
-    const match = url.match(/\/(p|reel)\/([A-Za-z0-9_-]+)/);
-    if (match && match[2]) {
-        mediaUrl = 'https://www.instagram.com/p/' + match[2] + '/media/?size=l';
-    }
-
-    // Se for URL do Instagram, passa pelo proxy WeServ para ignorar bloqueio CORS no Xibo:
-    if (mediaUrl.includes('instagram.com')) {
-        return 'https://wsrv.nl/?url=' + encodeURIComponent(mediaUrl);
-    }
-    return mediaUrl;
+// Fallback elegante caso a imagem falhe
+function handleImageError(img) {
+    img.onerror = null;
+    img.src = 'https://images.unsplash.com/photo-1544717305-2782549b5136?auto=format&fit=crop&w=800&q=80';
 }
 
 function renderPost() {
@@ -346,9 +339,7 @@ function renderPost() {
     if (!imgEl || !captionEl) return;
 
     const post = instagramPosts[postIdx];
-    
-    // Carrega a imagem passando pelo bypass CORS
-    imgEl.src = getInstagramMediaUrl(post.image);
+    imgEl.src = post.image;
     captionEl.textContent = post.caption;
     if (dateEl) dateEl.textContent = post.date;
 

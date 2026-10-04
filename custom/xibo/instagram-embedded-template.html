@@ -30,7 +30,7 @@
     <div class="insta-body">
         <div class="insta-post-card">
             <div class="post-media-wrap">
-                <img id="postImage" src="" alt="Post Instagram BahiaSul" />
+                <img id="postImage" src="" alt="Post Instagram BahiaSul" referrerpolicy="no-referrer" />
             </div>
             <div class="post-info-wrap">
                 <span class="post-badge-tag">Destaque Instagram</span>
@@ -322,17 +322,21 @@ const instagramPosts = [
 
 let postIdx = 0;
 
-// Converte links do Instagram (ex: https://www.instagram.com/p/Ddq7HAdEY7v) para a imagem real
+// Burlador de bloqueio CORS / Referer do Instagram Meta CDN via proxy de mídia weserv
 function getInstagramMediaUrl(url) {
     if (!url) return '';
-    if (url.includes('/media/?size=') || url.match(/\.(jpeg|jpg|png|webp)/i)) {
-        return url;
-    }
+    
+    let mediaUrl = url;
     const match = url.match(/\/(p|reel)\/([A-Za-z0-9_-]+)/);
     if (match && match[2]) {
-        return 'https://www.instagram.com/p/' + match[2] + '/media/?size=l';
+        mediaUrl = 'https://www.instagram.com/p/' + match[2] + '/media/?size=l';
     }
-    return url;
+
+    // Se for URL do Instagram, passa pelo proxy WeServ para ignorar bloqueio CORS no Xibo:
+    if (mediaUrl.includes('instagram.com')) {
+        return 'https://wsrv.nl/?url=' + encodeURIComponent(mediaUrl);
+    }
+    return mediaUrl;
 }
 
 function renderPost() {
@@ -342,6 +346,8 @@ function renderPost() {
     if (!imgEl || !captionEl) return;
 
     const post = instagramPosts[postIdx];
+    
+    // Carrega a imagem passando pelo bypass CORS
     imgEl.src = getInstagramMediaUrl(post.image);
     captionEl.textContent = post.caption;
     if (dateEl) dateEl.textContent = post.date;

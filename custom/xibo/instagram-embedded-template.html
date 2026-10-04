@@ -1,5 +1,5 @@
 <!-- ==========================================================================
-   WIDGET HTML INCORPORADO (INSTAGRAM COM MÍDIAS DA BIBLIOTECA XIBO) — BAHIASUL
+   WIDGET HTML INCORPORADO (SETEMBRO AMARELO — @conexaobahiasul)
    ========================================================================== -->
 
 <!-- 1. HTML (Cole no campo HTML do Widget Incorporado / Embedded no Xibo) -->
@@ -18,7 +18,7 @@
                     @conexaobahiasul
                     <span class="verified-badge">✓</span>
                 </div>
-                <div class="profile-sub">Conexão BahiaSul • Feed Oficial</div>
+                <div class="profile-sub">Conexão BahiaSul • Palestra Setembro Amarelo</div>
             </div>
         </div>
         <div class="insta-badge-logo">
@@ -26,14 +26,14 @@
         </div>
     </div>
 
-    <!-- Área de Exibição das Fotos Publicadas no Servidor -->
+    <!-- Área de Exibição dos Posts da Palestra Setembro Amarelo -->
     <div class="insta-body">
         <div class="insta-post-card">
             <div class="post-media-wrap">
-                <img id="postImage" src="" alt="Post Instagram BahiaSul" />
+                <img id="postImage" src="" alt="Palestra Setembro Amarelo BahiaSul" />
             </div>
             <div class="post-info-wrap">
-                <span class="post-badge-tag">Destaque Instagram</span>
+                <span class="post-badge-tag">Setembro Amarelo</span>
                 <p class="post-caption-text" id="postCaption">Carregando publicação...</p>
                 <span class="post-date-tag" id="postDate">@conexaobahiasul</span>
             </div>
@@ -41,9 +41,9 @@
 
         <div class="qr-side-card">
             <span class="qr-tag">SIGA A BAHIASUL</span>
-            <h3 class="qr-title">Aponte a câmera do celular e confira!</h3>
+            <h3 class="qr-title">Aponte a câmera do celular e confira no Instagram!</h3>
             <div class="qr-code-box">
-                <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://www.instagram.com/conexaobahiasul/" alt="QR Code Instagram" />
+                <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://www.instagram.com/p/Ddq7HAdEY7v/" alt="QR Code Setembro Amarelo Instagram" />
                 <span class="qr-label">@conexaobahiasul</span>
             </div>
         </div>
@@ -304,33 +304,57 @@ html, body {
 
 <!-- 3. JAVASCRIPT (Cole no campo JavaScript do Widget Incorporado / Embedded no Xibo) -->
 <script>
-// POSTAGENS VINCULADAS DIRETAMENTE ÀS FOTOS PUBLICADAS NO SERVIDOR DA BAHIASUL:
-// O caminho '/userscripts/media/XX.jpg' carrega diretamente as fotos sem erros de permissão!
+// POSTAGENS VINCULADAS À PALESTRA SETEMBRO AMARELO DA BIBLIOTECA DO XIBO:
 const instagramPosts = [
     {
-        image: '/userscripts/media/25.jpg',
-        caption: '🔥 Capacitação que salva vidas! Treinamento de Combate a Incêndio e Primeiros Socorros na Conexão Bahia Sul.🧯',
-        date: 'Conexão BahiaSul • Post Oficial'
+        image: '/userscripts/media/44.jpg',
+        caption: 'Setembro Amarelo | Conexão Bahia Sul. Na Conexão Bahia Sul, acreditamos que cuidar das pessoas também faz parte do nosso compromisso.',
+        date: 'Conexão BahiaSul • Foto 1 de 10'
     },
     {
-        image: '/userscripts/media/28.jpg',
-        caption: 'Treinamento prático de primeiros socorros e brigada de incêndio BahiaSul. Segurança em 1º lugar!',
-        date: 'Conexão BahiaSul • Post Oficial'
+        image: '/userscripts/media/45.jpg',
+        caption: 'Palestra de Valorização da Vida e Saúde Mental na Conexão Bahia Sul. Falar é a melhor opção!',
+        date: 'Conexão BahiaSul • Foto 2 de 10'
     },
     {
-        image: '/userscripts/media/29.jpg',
-        caption: 'Nossa equipe em constante evolução para prestar o melhor serviço e suporte da região.',
-        date: 'Conexão BahiaSul • Post Oficial'
+        image: '/userscripts/media/46.jpg',
+        caption: 'Promovendo a conscientização, escuta empática e o cuidado com a saúde mental de nossa equipe.',
+        date: 'Conexão BahiaSul • Foto 3 de 10'
     },
     {
-        image: '/userscripts/media/30.jpg',
-        caption: 'Treinamento de primeiros socorros e atendimento de urgência da Conexão BahiaSul.',
-        date: 'Conexão BahiaSul • Post Oficial'
+        image: '/userscripts/media/47.jpg',
+        caption: 'Momentos de aprendizado e apoio mútuo no Setembro Amarelo Conexão Bahia Sul.',
+        date: 'Conexão BahiaSul • Foto 4 de 10'
     },
     {
-        image: '/userscripts/media/31.jpg',
-        caption: 'Conexão BahiaSul — Capacitação continuada de equipe e atendimento de excelência.',
-        date: 'Conexão BahiaSul • Post Oficial'
+        image: '/userscripts/media/48.jpg',
+        caption: 'Setembro Amarelo | Você não está sozinho. Conexão Bahia Sul apoiando esta causa.',
+        date: 'Conexão BahiaSul • Foto 5 de 10'
+    },
+    {
+        image: '/userscripts/media/49.jpg',
+        caption: 'Ações de conscientização e apoio à vida na Conexão Bahia Sul.',
+        date: 'Conexão BahiaSul • Foto 6 de 10'
+    },
+    {
+        image: '/userscripts/media/50.jpg',
+        caption: 'Cuidar das pessoas é nossa prioridade todos os dias na Conexão Bahia Sul.',
+        date: 'Conexão BahiaSul • Foto 7 de 10'
+    },
+    {
+        image: '/userscripts/media/51.jpg',
+        caption: 'Palestra Setembro Amarelo — União, apoio e saúde mental para todos.',
+        date: 'Conexão BahiaSul • Foto 8 de 10'
+    },
+    {
+        image: '/userscripts/media/52.jpg',
+        caption: 'Juntos pela valorização da vida! Conexão Bahia Sul.',
+        date: 'Conexão BahiaSul • Foto 9 de 10'
+    },
+    {
+        image: '/userscripts/media/53.jpg',
+        caption: 'Setembro Amarelo Conexão Bahia Sul. Apoio, empatia e compromisso com nossa comunidade.',
+        date: 'Conexão BahiaSul • Foto 10 de 10'
     }
 ];
 

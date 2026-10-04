@@ -1,5 +1,5 @@
 <!-- ==========================================================================
-   WIDGET HTML INCORPORADO (INSTAGRAM POST CARD REQUISITADO) — @conexaobahiasul
+   WIDGET HTML INCORPORADO (INSTAGRAM POSTS REAIS BAHIASUL) — @conexaobahiasul
    ========================================================================== -->
 
 <!-- 1. HTML (Cole no campo HTML do Widget Incorporado / Embedded no Xibo) -->
@@ -26,11 +26,11 @@
         </div>
     </div>
 
-    <!-- Área de Exibição 100% Funcional dos Posts com Imagem e Legenda -->
+    <!-- Área de Exibição das Fotos dos Posts Reais -->
     <div class="insta-body">
         <div class="insta-post-card">
             <div class="post-media-wrap">
-                <img id="postImage" src="" alt="Post Instagram" />
+                <img id="postImage" src="" alt="Post Instagram BahiaSul" />
             </div>
             <div class="post-info-wrap">
                 <span class="post-badge-tag">Destaque Instagram</span>
@@ -301,27 +301,39 @@ html, body {
 
 <!-- 3. JAVASCRIPT (Cole no campo JavaScript do Widget Incorporado / Embedded no Xibo) -->
 <script>
-// LISTA DE POSTAGENS E FOTOS DOS POSTS DA CONEXÃO BAHIASUL:
-// (Você pode adicionar mais fotos de campanhas ou posts trocando a imagem e o texto):
+// SUAS POSTAGENS REAIS DO INSTAGRAM DA BAHIASUL:
 const instagramPosts = [
     {
-        image: 'https://images.unsplash.com/photo-1544717305-2782549b5136?auto=format&fit=crop&w=800&q=80',
-        caption: 'Ultravelocidade com estabilidade real para sua casa e empresa. Conheça nossos planos de Fibra Óptica!',
+        image: 'https://www.instagram.com/conexaobahiasul/p/Ddq7HAdEY7v',
+        caption: 'Setembro Amarelo | Conexão Bahia Sul. Na Conexão Bahia Sul, acreditamos que cuidar das pessoas também faz parte do nosso compromisso.',
         date: 'Conexão BahiaSul • Post Oficial'
     },
     {
-        image: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=800&q=80',
-        caption: 'Atendimento humanizado e suporte ágil na BahiaSul. Conectando você a quem você ama!',
+        image: 'https://www.instagram.com/conexaobahiasul/p/DdzF3FkkXvI',
+        caption: '🔥 Capacitação que salva vidas! Hoje, na Conexão Bahia Sul, estamos realizando um treinamento de Combate a Incêndio e Primeiros Socorros.🧯',
         date: 'Conexão BahiaSul • Post Oficial'
     },
     {
-        image: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=800&q=80',
-        caption: 'Mídia Indoor BahiaSul: Leve sua marca para milhares de pessoas em locais estratégicos da região.',
+        image: 'https://www.instagram.com/p/DdkE9o8M_mq',
+        caption:  'Tem parceria nova chegando! A Conexão Bahia Sul se uniu à Hamburgueria Dom Marques para trazer ainda mais vantagens para você! 😍',
         date: 'Conexão BahiaSul • Post Oficial'
     }
 ];
 
 let postIdx = 0;
+
+// Converte links do Instagram (ex: https://www.instagram.com/p/Ddq7HAdEY7v) para a imagem real
+function getInstagramMediaUrl(url) {
+    if (!url) return '';
+    if (url.includes('/media/?size=') || url.match(/\.(jpeg|jpg|png|webp)/i)) {
+        return url;
+    }
+    const match = url.match(/\/(p|reel)\/([A-Za-z0-9_-]+)/);
+    if (match && match[2]) {
+        return 'https://www.instagram.com/p/' + match[2] + '/media/?size=l';
+    }
+    return url;
+}
 
 function renderPost() {
     const imgEl = document.getElementById('postImage');
@@ -330,7 +342,7 @@ function renderPost() {
     if (!imgEl || !captionEl) return;
 
     const post = instagramPosts[postIdx];
-    imgEl.src = post.image;
+    imgEl.src = getInstagramMediaUrl(post.image);
     captionEl.textContent = post.caption;
     if (dateEl) dateEl.textContent = post.date;
 

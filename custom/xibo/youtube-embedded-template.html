@@ -1,18 +1,10 @@
 <!-- ==========================================================================
-   WIDGET HTML INCORPORADO (YOUTUBE VIDEO PLAYER) — CONEXÃO BAHIASUL
+   WIDGET HTML INCORPORADO (YOUTUBE AUTOPLAY PLAYER) — CONEXÃO BAHIASUL
    ========================================================================== -->
 
 <!-- 1. HTML (Cole no campo HTML do Widget Incorporado / Embedded no Xibo) -->
 <div class="bahiasul-youtube-container">
-    <!-- Insira o ID do seu vídeo do YouTube no iframe abaixo (substitua VIDEO_ID): -->
-    <iframe 
-        id="ytPlayer"
-        src="https://www.youtube-nocookie.com/embed/VIDEO_ID?autoplay=1&mute=0&controls=1&loop=1&playlist=VIDEO_ID&enablejsapi=1" 
-        title="Vídeo YouTube BahiaSul" 
-        frameborder="0" 
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-        allowfullscreen>
-    </iframe>
+    <div id="player"></div>
 </div>
 
 <!-- 2. CSS (Cole no campo CSS do Widget Incorporado / Embedded no Xibo) -->
@@ -30,7 +22,6 @@ html, body {
     width: 100%;
     height: 100%;
     position: relative;
-    overflow: hidden;
 }
 
 .bahiasul-youtube-container iframe {
@@ -41,8 +32,54 @@ html, body {
 }
 </style>
 
-<!-- 3. JAVASCRIPT (Opcional - Cole no campo JavaScript para controle adicional) -->
+<!-- 3. JAVASCRIPT (Cole no campo JavaScript do Widget Incorporado / Embedded no Xibo) -->
 <script>
-// Exemplo de manipulação adicional se necessário:
-console.log('Player YouTube BahiaSul Carregado');
+// ID do Vídeo do YouTube (ex: para https://www.youtube.com/watch?v=NE_lF0tSDuE o ID é NE_lF0tSDuE):
+const YOUTUBE_VIDEO_ID = 'NE_lF0tSDuE';
+
+let player;
+
+function onYouTubeIframeAPIReady() {
+    player = new YT.Player('player', {
+        height: '100%',
+        width: '100%',
+        videoId: YOUTUBE_VIDEO_ID,
+        playerVars: {
+            'autoplay': 1,
+            'controls': 0,
+            'loop': 1,
+            'playlist': YOUTUBE_VIDEO_ID,
+            'rel': 0,
+            'showinfo': 0,
+            'modestbranding': 1,
+            'playsinline': 1
+        },
+        events: {
+            'onReady': onPlayerReady
+        }
+    });
+}
+
+function onPlayerReady(event) {
+    // Inicia a reprodução garantida do vídeo para não ficar em tela preta
+    event.target.playVideo();
+    
+    // Tenta liberar o som automaticamente após a inicialização
+    setTimeout(() => {
+        try {
+            event.target.unMute();
+            event.target.setVolume(100);
+        } catch(e) {}
+    }, 1200);
+}
+
+// Carrega o SDK Oficial da API Iframe do YouTube
+if (!window.YT) {
+    const tag = document.createElement('script');
+    tag.src = "https://www.youtube.com/iframe_api";
+    const firstScriptTag = document.getElementsByTagName('script')[0];
+    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+} else if (window.YT && window.YT.Player) {
+    onYouTubeIframeAPIReady();
+}
 </script>

@@ -53,23 +53,19 @@ No Xibo CMS, você pode reproduzir vídeos e músicas de **duas formas principai
 
 ---
 
-#### Método A: Vídeo ou Música do YouTube (via HTML Incorporado ou Iframe)
+#### Método A: Vídeo ou Música do YouTube (Sem Tela Preta por Política de Autoplay)
 
-Para reproduzir qualquer vídeo ou clipe do YouTube em uma região do Layout:
+Os navegadores modernos (Chrome, Chromium, Firefox e o player do Xibo) **bloqueiam o Autoplay quando o áudio está desmutado (`mute=0`) sem uma interação prévia do usuário**, fazendo o player do YouTube travar em **tela preta**.
 
-1. Adicione um Widget **HTML Incorporado** (*Embedded*) na região desejada.
-2. Cole o código HTML abaixo, substituindo `VIDEO_ID` pelo código do seu vídeo (exemplo: no link `https://www.youtube.com/watch?v=dQw4w9WgXcQ`, o ID é `dQw4w9WgXcQ`):
+Para resolver isso e fazer o vídeo `NE_lF0tSDuE` tocar **imediatamente com áudio sem travar em tela preta**:
+
+1. Adicione um Widget **HTML Incorporado** (*Embedded*) na região do Layout.
+2. Cole os códigos nas abas **HTML**, **CSS** e **JavaScript**:
 
 ##### Campo HTML:
 ```html
 <div class="bahiasul-youtube-container">
-    <iframe 
-        src="https://www.youtube-nocookie.com/embed/VIDEO_ID?autoplay=1&mute=0&controls=0&loop=1&playlist=VIDEO_ID" 
-        title="Vídeo YouTube BahiaSul" 
-        frameborder="0" 
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-        allowfullscreen>
-    </iframe>
+    <div id="player"></div>
 </div>
 ```
 
@@ -80,7 +76,29 @@ html, body { margin: 0; padding: 0; width: 100%; height: 100%; overflow: hidden;
 .bahiasul-youtube-container iframe { width: 100%; height: 100%; border: none; display: block; }
 ```
 
-*Nota*: Para reproduzir **com som**, certifique-se de que o parâmetro `mute=0` está configurado e que as permissões de som do navegador/player estão ativadas.
+##### Campo JavaScript:
+```javascript
+const YOUTUBE_VIDEO_ID = 'NE_lF0tSDuE'; // Cole o ID do vídeo desejado
+let player;
+
+function onYouTubeIframeAPIReady() {
+    player = new YT.Player('player', {
+        height: '100%', width: '100%', videoId: YOUTUBE_VIDEO_ID,
+        playerVars: { 'autoplay': 1, 'controls': 0, 'loop': 1, 'playlist': YOUTUBE_VIDEO_ID, 'playsinline': 1 },
+        events: { 'onReady': function(e) {
+            e.target.playVideo();
+            setTimeout(function() { try { e.target.unMute(); e.target.setVolume(100); } catch(err){} }, 1200);
+        }}
+    });
+}
+
+if (!window.YT) {
+    var tag = document.createElement('script');
+    tag.src = "https://www.youtube.com/iframe_api";
+    var firstScriptTag = document.getElementsByTagName('script')[0];
+    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+}
+```
 
 ---
 

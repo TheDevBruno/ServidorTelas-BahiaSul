@@ -47,21 +47,70 @@ Este documento orienta a criação, estruturação e estilização de **Layouts,
 
 ### 2.3 Mapeamento das Abas do Widget RSS Ticker no Xibo CMS v4 (Interface em Português)
 
-### 2.3 Como Configurar os Elementos do RSS Ticker no Xibo CMS v4
+### 2.4 Configuração via Widget HTML Incorporado (Embedded RSS Feed Customizado)
 
-Na interface nativa do Xibo v4, você pode selecionar visualmente os blocos de dados que deseja exibir:
+Se você preferir **liberdade total de estilização e transição**, a melhor alternativa é usar o módulo **HTML Incorporado (Embedded)**:
 
-1. **Na aba de Elementos (Blocos de Dados)**:
-   - Marque a caixa **`Título`** (obrigatório para exibir a chamada da notícia).
-   - *(Opcional)* Marque **`Data de publicação`** ou **`Resumo`** caso queira complementar a informação no ticker.
-   - O Xibo irá montar automaticamente a chamada da notícia com base nas caixas marcadas.
+1. No Designer de Layout do Xibo, arraste o Widget **HTML Incorporado** (*Embedded*) para a Região do Rodapé (`1920 x 100`).
+2. O Xibo exibirá caixas para **HTML**, **CSS** e **JavaScript**:
 
-2. **Aba `Aparência`**:
-   - **Efeitos**: Defina como **"Marquee Left"** (Rolagem para a esquerda) para criar o efeito de rodapé contínuo.
-   - **Velocidade**: Ajuste para `1500` - `2000`.
+#### Campo HTML:
+```html
+<div class="bahiasul-rss-container">
+    <div class="rss-badge-box">
+        <span class="rss-badge">NOTÍCIAS</span>
+    </div>
+    <div class="rss-scroll-viewport">
+        <div class="rss-scroll-track" id="rssTrack">
+            <span class="rss-item">Conexão BahiaSul — Carregando notícias...</span>
+        </div>
+    </div>
+</div>
+```
 
-3. **Estilização Visual**:
-   - Com as regras globais que implantamos no `override.css`, os elementos selecionados serão formatados automaticamente no padrão da **Conexão BahiaSul** (Fonte Montserrat, cor branca e fundo Azul/Laranja).
+#### Campo CSS:
+```css
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&display=swap');
+
+html, body { margin: 0; padding: 0; width: 100%; height: 100%; overflow: hidden; background: transparent; }
+
+.bahiasul-rss-container {
+    display: flex; align-items: center; width: 100%; height: 100%;
+    background-color: #0B3960; border-top: 4px solid #F26D21; font-family: 'Montserrat', sans-serif;
+}
+.rss-badge-box { padding: 0 18px; z-index: 10; background-color: #0B3960; flex-shrink: 0; }
+.rss-badge { background-color: #F26D21; color: #FFFFFF; font-weight: 800; font-size: 16px; padding: 6px 14px; border-radius: 4px; text-transform: uppercase; }
+.rss-scroll-viewport { flex: 1; overflow: hidden; white-space: nowrap; }
+.rss-scroll-track { display: inline-block; padding-left: 100%; white-space: nowrap; animation: marqueeScroll 35s linear infinite; }
+.rss-item { font-size: 24px; font-weight: 600; color: #FFFFFF; }
+.rss-separator { color: #F26D21; font-size: 26px; margin: 0 20px; font-weight: 800; }
+
+@keyframes marqueeScroll { 0% { transform: translate3d(0, 0, 0); } 100% { transform: translate3d(-100%, 0, 0); } }
+```
+
+#### Campo JavaScript (Altere a variável `RSS_FEED_URL` para o feed desejado):
+```javascript
+const RSS_FEED_URL = 'https://g1.globo.com/rss/g1/'; // Cole aqui a URL do seu feed RSS
+
+async function fetchAndRenderRSS() {
+    const track = document.getElementById('rssTrack');
+    if (!track) return;
+    try {
+        const apiUrl = 'https://api.rss2json.com/v1/api.json?rss_url=' + encodeURIComponent(RSS_FEED_URL);
+        const response = await fetch(apiUrl);
+        const data = await response.json();
+        if (data.status === 'ok' && data.items && data.items.length > 0) {
+            let html = '';
+            data.items.slice(0, 12).forEach(item => {
+                html += `<span class="rss-item">${item.title}</span><span class="rss-separator">•</span>`;
+            });
+            track.innerHTML = html;
+        }
+    } catch (e) {}
+}
+fetchAndRenderRSS();
+setInterval(fetchAndRenderRSS, 15 * 60 * 1000);
+```
 
 ---
 

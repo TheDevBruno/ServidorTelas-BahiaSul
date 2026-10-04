@@ -1,0 +1,119 @@
+<!-- ==========================================================================
+   WIDGET HTML INCORPORADO (EMBEDDED RSS TICKER) — CONEXÃO BAHIASUL
+   ========================================================================== -->
+
+<!-- 1. HTML (Cole no campo HTML do Widget Incorporado no Xibo) -->
+<div class="bahiasul-rss-container">
+    <div class="rss-badge-box">
+        <span class="rss-badge">NOTÍCIAS</span>
+    </div>
+    <div class="rss-scroll-viewport">
+        <div class="rss-scroll-track" id="rssTrack">
+            <span class="rss-item">Conexão BahiaSul — Carregando últimas notícias...</span>
+        </div>
+    </div>
+</div>
+
+<!-- 2. CSS (Cole no campo CSS do Widget Incorporado no Xibo) -->
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&display=swap');
+
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background: transparent;
+}
+
+.bahiasul-rss-container {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    background-color: #0B3960;
+    border-top: 4px solid #F26D21;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.rss-badge-box {
+    padding: 0 18px;
+    z-index: 10;
+    background-color: #0B3960;
+    flex-shrink: 0;
+}
+
+.rss-badge {
+    background-color: #F26D21;
+    color: #FFFFFF;
+    font-weight: 800;
+    font-size: 16px;
+    letter-spacing: 1px;
+    padding: 6px 14px;
+    border-radius: 4px;
+    text-transform: uppercase;
+}
+
+.rss-scroll-viewport {
+    flex: 1;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.rss-scroll-track {
+    display: inline-block;
+    padding-left: 100%;
+    white-space: nowrap;
+    animation: marqueeScroll 35s linear infinite;
+}
+
+.rss-item {
+    font-size: 24px;
+    font-weight: 600;
+    color: #FFFFFF;
+}
+
+.rss-separator {
+    color: #F26D21;
+    font-size: 26px;
+    margin: 0 20px;
+    font-weight: 800;
+}
+
+@keyframes marqueeScroll {
+    0% { transform: translate3d(0, 0, 0); }
+    100% { transform: translate3d(-100%, 0, 0); }
+}
+</style>
+
+<!-- 3. JAVASCRIPT (Cole no campo JavaScript do Widget Incorporado no Xibo) -->
+<script>
+// SUBSTISUA A URL ABAIXO PELO SEU FEED RSS DESEJADO:
+const RSS_FEED_URL = 'https://g1.globo.com/rss/g1/';
+
+async function fetchAndRenderRSS() {
+    const track = document.getElementById('rssTrack');
+    if (!track) return;
+
+    try {
+        const apiUrl = 'https://api.rss2json.com/v1/api.json?rss_url=' + encodeURIComponent(RSS_FEED_URL);
+        const response = await fetch(apiUrl);
+        const data = await response.json();
+
+        if (data.status === 'ok' && data.items && data.items.length > 0) {
+            let html = '';
+            data.items.slice(0, 12).forEach(item => {
+                html += `<span class="rss-item">${item.title}</span><span class="rss-separator">•</span>`;
+            });
+            track.innerHTML = html;
+        }
+    } catch (e) {
+        console.log('Mantendo mensagem padrão de fallback');
+    }
+}
+
+fetchAndRenderRSS();
+setInterval(fetchAndRenderRSS, 15 * 60 * 1000); // Atualiza a cada 15 minutos
+</script>

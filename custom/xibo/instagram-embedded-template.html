@@ -1,10 +1,9 @@
 <!-- ==========================================================================
-   WIDGET HTML INCORPORADO (INSTAGRAM SOCIAL CARD) — @conexaobahiasul
+   WIDGET HTML INCORPORADO (INSTAGRAM PHOTO FEED CARD) — @conexaobahiasul
    ========================================================================== -->
 
 <!-- 1. HTML (Cole no campo HTML do Widget Incorporado / Embedded no Xibo) -->
-<div class="bahiasul-insta-card">
-    <!-- Cabeçalho do Perfil -->
+<div class="bahiasul-insta-card" id="instaCard">
     <div class="insta-header">
         <div class="profile-info">
             <div class="insta-avatar">
@@ -15,35 +14,38 @@
                     @conexaobahiasul
                     <span class="verified-badge">✓</span>
                 </div>
-                <div class="profile-sub">Conexão BahiaSul • Provedor de Internet</div>
+                <div class="profile-sub">Conexão BahiaSul • Fotos & Publicações</div>
             </div>
         </div>
         <div class="insta-logo-badge">
             <svg class="insta-icon" viewBox="0 0 24 24">
-                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
             </svg>
         </div>
     </div>
 
-    <!-- Conteúdo Principal do Post -->
-    <div class="insta-content">
-        <div class="post-preview">
-            <div class="post-tag">SIGA A BAHIASUL NO INSTAGRAM</div>
-            <h2 class="post-title" id="postTitle">Fique por dentro das novidades, promoções e dicas da Conexão BahiaSul!</h2>
-            <p class="post-desc" id="postDesc">Aponte a câmera do celular para o QR Code ao lado e acompanhe nossos conteúdos exclusivos.</p>
+    <!-- Conteúdo com Exibição da Foto do Post -->
+    <div class="insta-body">
+        <div class="post-image-box">
+            <img id="postImage" src="/library/brand/logo.svg" alt="Post Instagram BahiaSul" />
         </div>
+        <div class="post-details">
+            <div class="post-tag">INSTAGRAM @CONEXAOBAHIASUL</div>
+            <p class="post-caption" id="postCaption">Fique por dentro de todas as novidades e dicas da Conexão BahiaSul!</p>
 
-        <!-- Área de QR Code da Conexão BahiaSul -->
-        <div class="qr-box">
-            <img src="https://api.qrserver.com/v1/create-qr-code/?size=220x220&data=https://www.instagram.com/conexaobahiasul/" alt="QR Code Instagram BahiaSul" />
-            <span class="qr-label">ESCANEE O QR CODE</span>
+            <div class="qr-container">
+                <img src="https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=https://www.instagram.com/conexaobahiasul/" alt="QR Code Instagram" />
+                <div class="qr-info">
+                    <span class="qr-title">SIGA NOSSO PERFIL</span>
+                    <span class="qr-sub">Abra a câmera do celular para ler o QR Code</span>
+                </div>
+            </div>
         </div>
     </div>
 
-    <!-- Rodapé -->
     <div class="insta-footer">
         <span class="footer-link">instagram.com/conexaobahiasul</span>
-        <span class="footer-cta">@conexaobahiasul • Mídia Indoor</span>
+        <span class="footer-cta">Mídia Indoor BahiaSul</span>
     </div>
 </div>
 
@@ -74,13 +76,14 @@ html, body {
     color: #FFFFFF;
     position: relative;
     border-top: 5px solid #F26D21;
+    transition: opacity 0.4s ease-in-out;
 }
 
 .insta-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding-bottom: 16px;
+    padding-bottom: 14px;
     border-bottom: 1px solid rgba(255, 255, 255, 0.15);
 }
 
@@ -91,10 +94,10 @@ html, body {
 }
 
 .insta-avatar {
-    width: 56px;
-    height: 56px;
+    width: 50px;
+    height: 50px;
     border-radius: 50%;
-    padding: 3px;
+    padding: 2px;
     background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
     display: flex;
     align-items: center;
@@ -110,7 +113,7 @@ html, body {
 }
 
 .profile-handle {
-    font-size: 20px;
+    font-size: 19px;
     font-weight: 800;
     color: #FFFFFF;
     display: flex;
@@ -121,9 +124,9 @@ html, body {
 .verified-badge {
     background-color: #3897f0;
     color: #FFFFFF;
-    font-size: 11px;
-    width: 16px;
-    height: 16px;
+    font-size: 10px;
+    width: 15px;
+    height: 15px;
     border-radius: 50%;
     display: inline-flex;
     align-items: center;
@@ -132,16 +135,16 @@ html, body {
 }
 
 .profile-sub {
-    font-size: 13px;
+    font-size: 12px;
     color: #CBD5E1;
     font-weight: 500;
     margin-top: 2px;
 }
 
 .insta-logo-badge {
-    width: 44px;
-    height: 44px;
-    border-radius: 12px;
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
     background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
     display: flex;
     align-items: center;
@@ -149,83 +152,115 @@ html, body {
 }
 
 .insta-icon {
-    width: 26px;
-    height: 26px;
+    width: 22px;
+    height: 22px;
     fill: #FFFFFF;
 }
 
-.insta-content {
+.insta-body {
     flex: 1;
     display: flex;
     align-items: center;
-    justify-content: space-between;
     gap: 24px;
-    padding: 20px 0;
+    padding: 18px 0;
 }
 
-.post-preview {
+.post-image-box {
+    width: 45%;
+    height: 100%;
+    min-height: 200px;
+    max-height: 280px;
+    border-radius: 12px;
+    overflow: hidden;
+    background-color: #072540;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3);
+}
+
+.post-image-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.post-details {
     flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
 }
 
 .post-tag {
     background-color: #F26D21;
     color: #FFFFFF;
     font-weight: 800;
-    font-size: 12px;
-    padding: 5px 12px;
+    font-size: 11px;
+    padding: 4px 10px;
     border-radius: 4px;
     display: inline-block;
-    margin-bottom: 14px;
-    letter-spacing: 1px;
+    align-self: flex-start;
+    letter-spacing: 0.5px;
+    margin-bottom: 10px;
 }
 
-.post-title {
-    font-size: 24px;
-    font-weight: 800;
-    line-height: 1.35;
-    margin: 0 0 12px 0;
+.post-caption {
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 1.4;
     color: #FFFFFF;
+    margin: 0 0 16px 0;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
 }
 
-.post-desc {
-    font-size: 16px;
-    color: #94A3B8;
-    line-height: 1.5;
-    margin: 0;
+.qr-container {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    background: rgba(255, 255, 255, 0.08);
+    padding: 10px 14px;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
 }
 
-.qr-box {
+.qr-container img {
+    width: 70px;
+    height: 70px;
+    border-radius: 6px;
     background: #FFFFFF;
-    padding: 14px;
-    border-radius: 12px;
+    padding: 4px;
+}
+
+.qr-info {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
-    flex-shrink: 0;
 }
 
-.qr-box img {
-    width: 140px;
-    height: 140px;
-    border-radius: 6px;
-}
-
-.qr-label {
-    color: #0B3960;
-    font-size: 11px;
+.qr-title {
+    color: #F26D21;
     font-weight: 800;
-    margin-top: 8px;
+    font-size: 13px;
     letter-spacing: 0.5px;
+}
+
+.qr-sub {
+    color: #CBD5E1;
+    font-size: 11px;
+    margin-top: 2px;
 }
 
 .insta-footer {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding-top: 14px;
+    padding-top: 12px;
     border-top: 1px solid rgba(255, 255, 255, 0.15);
-    font-size: 13px;
+    font-size: 12px;
 }
 
 .footer-link {
@@ -241,34 +276,44 @@ html, body {
 
 <!-- 3. JAVASCRIPT (Cole no campo JavaScript do Widget Incorporado / Embedded no Xibo) -->
 <script>
-// Carrossel dinâmico de chamadas institucionais do Instagram Conexão BahiaSul
-const posts = [
+// Lista de Publicações e Fotos do Perfil Instagram @conexaobahiasul
+// (Adicione ou altere as imagens e frases da equipe/serviços conforme suas campanhas):
+const instagramPosts = [
     {
-        title: 'Fique por dentro de todas as novidades e dicas da Conexão BahiaSul!',
-        desc: 'Acompanhe nosso perfil no Instagram para conteúdos exclusivos e ofertas de ultravelocidade.'
+        image: 'https://images.unsplash.com/photo-1544717305-2782549b5136?auto=format&fit=crop&w=600&q=80',
+        caption: 'Ultravelocidade com estabilidade real para sua casa e empresa. Conheça nossos planos de Fibra Óptica!'
     },
     {
-        title: 'Precisa de Suporte ou Atendimento Rápido?',
-        desc: 'Conecte-se conosco no Instagram @conexaobahiasul ou acesse nosso site bahiasul.com.br'
+        image: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=600&q=80',
+        caption: 'Atendimento humanizado e suporte ágil na BahiaSul. Conectando você a quem você ama!'
     },
     {
-        title: 'Internet de Alta Performance para Sua Casa e Empresa!',
-        desc: 'Siga @conexaobahiasul e compartilhe sua experiência com nossa conexão de fibra óptica.'
+        image: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=600&q=80',
+        caption: 'Mídia Indoor BahiaSul: Leve sua marca para milhares de pessoas em locais estratégicos da região.'
     }
 ];
 
-let postIndex = 0;
+let currentPostIndex = 0;
 
-function rotatePost() {
-    const titleEl = document.getElementById('postTitle');
-    const descEl = document.getElementById('postDesc');
-    
-    if (titleEl && descEl) {
-        postIndex = (postIndex + 1) % posts.length;
-        titleEl.textContent = posts[postIndex].title;
-        descEl.textContent = posts[postIndex].desc;
-    }
+function renderInstagramPost() {
+    const card = document.getElementById('instaCard');
+    if (!card) return;
+
+    card.style.opacity = '0.2';
+
+    setTimeout(() => {
+        const post = instagramPosts[currentPostIndex];
+        const imgEl = document.getElementById('postImage');
+        const captionEl = document.getElementById('postCaption');
+
+        if (imgEl) imgEl.src = post.image;
+        if (captionEl) captionEl.textContent = post.caption;
+
+        card.style.opacity = '1';
+        currentPostIndex = (currentPostIndex + 1) % instagramPosts.length;
+    }, 350);
 }
 
-setInterval(rotatePost, 10000); // Alterna mensagem a cada 10 segundos
+renderInstagramPost();
+setInterval(renderInstagramPost, 10000); // Rotaciona as fotos dos posts a cada 10 segundos
 </script>

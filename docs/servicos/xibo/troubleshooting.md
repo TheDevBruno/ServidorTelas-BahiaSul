@@ -24,6 +24,21 @@ sudo docker restart xibo-cms-web-1 xibo-cms-memcached-1
 
 ---
 
+## Erro no Widget: "A referência da sua biblioteca 0 não existe"
+
+### Causa
+Este aviso no Xibo v4 ocorre quando um Widget recém-criado tenta salvar o formulário no CMS sem associar uma mídia ou quando há um campo de biblioteca não selecionado no módulo.
+
+### Como Resolver
+1. **Recriar o Widget**:
+   - Exclua o widget atual que está exibindo o alerta vermelho.
+   - Adicione um novo Widget **HTML Incorporado** (*Embedded*) ou **Página Web** (*Webpage*).
+2. **Utilizar o Módulo Página Web (Para Vídeos/YouTube)**:
+   - Se o objetivo for reproduzir vídeos/músicas do YouTube, o módulo **Página Web** é o mais indicado.
+   - Basta arrastá-lo para a região e colocar a URL direta: `https://www.youtube.com/embed/CODIGO_DO_VIDEO?autoplay=1`.
+
+---
+
 ## Containers
 
 ```bash

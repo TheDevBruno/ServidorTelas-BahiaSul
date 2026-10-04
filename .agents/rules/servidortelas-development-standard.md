@@ -1,3 +1,8 @@
+---
+trigger: always_on
+description: "Padrão obrigatório de desenvolvimento, documentação, infraestrutura, scripts, validação e Git do projeto servidorTelas."
+---
+
 # RULE — servidorTelas Development Standard
 
 ## Objetivo

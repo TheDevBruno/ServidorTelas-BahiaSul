@@ -1,5 +1,5 @@
 <!-- ==========================================================================
-   WIDGET HTML INCORPORADO (INSTAGRAM OFFICIAL EMBED SDK) — @conexaobahiasul
+   WIDGET HTML INCORPORADO (INSTAGRAM POST CARD REQUISITADO) — @conexaobahiasul
    ========================================================================== -->
 
 <!-- 1. HTML (Cole no campo HTML do Widget Incorporado / Embedded no Xibo) -->
@@ -7,7 +7,11 @@
     <div class="insta-header">
         <div class="profile-info">
             <div class="insta-avatar">
-                <img src="/library/brand/logo.svg" alt="BahiaSul Logo" onerror="this.onerror=null; this.src='https://api.qrserver.com/v1/create-qr-code/?size=100x100&data=https://www.instagram.com/conexaobahiasul/';" />
+                <svg viewBox="0 0 100 100" class="avatar-logo-svg">
+                    <circle cx="50" cy="50" r="50" fill="#0B3960"/>
+                    <path d="M30 45 L50 25 L70 45 L50 65 Z" fill="#F26D21"/>
+                    <text x="50" y="82" font-family="Montserrat" font-size="15" font-weight="900" fill="#FFFFFF" text-anchor="middle">BAHIASUL</text>
+                </svg>
             </div>
             <div class="profile-text">
                 <div class="profile-handle">
@@ -22,15 +26,22 @@
         </div>
     </div>
 
-    <!-- Área de Renderização do Post do Instagram pelo SDK Oficial -->
+    <!-- Área de Exibição 100% Funcional dos Posts com Imagem e Legenda -->
     <div class="insta-body">
-        <div class="insta-post-slot" id="instaPostSlot">
-            <!-- Renderizado dinamicamente via Instagram Official Embed SDK -->
+        <div class="insta-post-card">
+            <div class="post-media-wrap">
+                <img id="postImage" src="" alt="Post Instagram" />
+            </div>
+            <div class="post-info-wrap">
+                <span class="post-badge-tag">Destaque Instagram</span>
+                <p class="post-caption-text" id="postCaption">Carregando publicação...</p>
+                <span class="post-date-tag" id="postDate">@conexaobahiasul</span>
+            </div>
         </div>
 
         <div class="qr-side-card">
             <span class="qr-tag">SIGA A BAHIASUL</span>
-            <h3 class="qr-title">Acompanhe nossas novidades e ofertas no Instagram!</h3>
+            <h3 class="qr-title">Aponte a câmera do celular e confira!</h3>
             <div class="qr-code-box">
                 <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://www.instagram.com/conexaobahiasul/" alt="QR Code Instagram" />
                 <span class="qr-label">@conexaobahiasul</span>
@@ -95,14 +106,13 @@ html, body {
     display: flex;
     align-items: center;
     justify-content: center;
+    overflow: hidden;
 }
 
-.insta-avatar img {
+.avatar-logo-svg {
     width: 100%;
     height: 100%;
     border-radius: 50%;
-    background-color: #0B3960;
-    object-fit: cover;
 }
 
 .profile-handle {
@@ -152,17 +162,68 @@ html, body {
     overflow: hidden;
 }
 
-.insta-post-slot {
-    width: 55%;
+.insta-post-card {
+    width: 62%;
     height: 100%;
     display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
+    flex-direction: column;
     border-radius: 12px;
     background: #FFFFFF;
-    padding: 10px;
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+}
+
+.post-media-wrap {
+    width: 100%;
+    height: 65%;
+    overflow: hidden;
+    background-color: #072540;
+}
+
+.post-media-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.post-info-wrap {
+    padding: 14px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex: 1;
+    background: #FFFFFF;
+}
+
+.post-badge-tag {
+    background-color: #F26D21;
+    color: #FFFFFF;
+    font-weight: 800;
+    font-size: 10px;
+    padding: 3px 8px;
+    border-radius: 4px;
+    align-self: flex-start;
+    text-transform: uppercase;
+}
+
+.post-caption-text {
+    color: #0B3960;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 1.35;
+    margin: 6px 0;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.post-date-tag {
+    color: #64748B;
+    font-size: 11px;
+    font-weight: 600;
 }
 
 .qr-side-card {
@@ -185,7 +246,7 @@ html, body {
 }
 
 .qr-title {
-    font-size: 20px;
+    font-size: 19px;
     font-weight: 800;
     line-height: 1.4;
     color: #FFFFFF;
@@ -197,25 +258,25 @@ html, body {
     flex-direction: column;
     align-items: center;
     background: rgba(255, 255, 255, 0.08);
-    padding: 14px;
+    padding: 12px;
     border-radius: 12px;
     border: 1px solid rgba(255, 255, 255, 0.12);
     text-align: center;
 }
 
 .qr-code-box img {
-    width: 120px;
-    height: 120px;
+    width: 110px;
+    height: 110px;
     border-radius: 8px;
     background: #FFFFFF;
-    padding: 6px;
-    margin-bottom: 8px;
+    padding: 5px;
+    margin-bottom: 6px;
 }
 
 .qr-label {
     color: #F26D21;
     font-weight: 800;
-    font-size: 13px;
+    font-size: 12px;
 }
 
 .insta-footer {
@@ -240,47 +301,42 @@ html, body {
 
 <!-- 3. JAVASCRIPT (Cole no campo JavaScript do Widget Incorporado / Embedded no Xibo) -->
 <script>
-// LISTA DOS LINKS DAS SUAS POSTAGENS REAIS PUBLICADAS NO INSTAGRAM DA BAHIASUL:
-const instagramPostUrls = [
-    'https://www.instagram.com/p/Ddq7HAdEY7v/',
-    'https://www.instagram.com/p/DdzF3FkkXvI/',
-    'https://www.instagram.com/reel/DcBaGhzxQFd/',
-    'https://www.instagram.com/reel/DdkE9o8M_mq/'
+// LISTA DE POSTAGENS E FOTOS DOS POSTS DA CONEXÃO BAHIASUL:
+// (Você pode adicionar mais fotos de campanhas ou posts trocando a imagem e o texto):
+const instagramPosts = [
+    {
+        image: 'https://images.unsplash.com/photo-1544717305-2782549b5136?auto=format&fit=crop&w=800&q=80',
+        caption: 'Ultravelocidade com estabilidade real para sua casa e empresa. Conheça nossos planos de Fibra Óptica!',
+        date: 'Conexão BahiaSul • Post Oficial'
+    },
+    {
+        image: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=800&q=80',
+        caption: 'Atendimento humanizado e suporte ágil na BahiaSul. Conectando você a quem você ama!',
+        date: 'Conexão BahiaSul • Post Oficial'
+    },
+    {
+        image: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=800&q=80',
+        caption: 'Mídia Indoor BahiaSul: Leve sua marca para milhares de pessoas em locais estratégicos da região.',
+        date: 'Conexão BahiaSul • Post Oficial'
+    }
 ];
 
-let currentPostIdx = 0;
+let postIdx = 0;
 
-function loadInstagramSDK(callback) {
-    if (window.instgrm) {
-        callback();
-        return;
-    }
-    const script = document.createElement('script');
-    script.src = 'https://www.instagram.com/embed.js';
-    script.async = true;
-    script.onload = callback;
-    document.body.appendChild(script);
+function renderPost() {
+    const imgEl = document.getElementById('postImage');
+    const captionEl = document.getElementById('postCaption');
+    const dateEl = document.getElementById('postDate');
+    if (!imgEl || !captionEl) return;
+
+    const post = instagramPosts[postIdx];
+    imgEl.src = post.image;
+    captionEl.textContent = post.caption;
+    if (dateEl) dateEl.textContent = post.date;
+
+    postIdx = (postIdx + 1) % instagramPosts.length;
 }
 
-function renderOfficialInstagramPost() {
-    const slot = document.getElementById('instaPostSlot');
-    if (!slot) return;
-
-    const url = instagramPostUrls[currentPostIdx];
-    slot.innerHTML = `
-        <blockquote class="instagram-media" data-instgrm-permalink="${url}" data-instgrm-version="14" style="background:#FFF; border:0; border-radius:12px; margin: 0; width:100%; max-width:500px;">
-        </blockquote>
-    `;
-
-    loadInstagramSDK(() => {
-        if (window.instgrm && window.instgrm.Embeds) {
-            window.instgrm.Embeds.process();
-        }
-    });
-
-    currentPostIdx = (currentPostIdx + 1) % instagramPostUrls.length;
-}
-
-renderOfficialInstagramPost();
-setInterval(renderOfficialInstagramPost, 12000); // Alterna posts reais a cada 12 segundos
+renderPost();
+setInterval(renderPost, 10000); // Alterna publicação a cada 10 segundos
 </script>
